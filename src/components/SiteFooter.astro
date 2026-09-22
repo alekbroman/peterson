@@ -5,9 +5,12 @@ import BrandLogo from "./BrandLogo.astro";
 const focusRing =
   "focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-[#d9f0f2]";
 const footerLink = `text-white underline-offset-4 hover:underline ${focusRing}`;
-const onHomepage = Astro.url.pathname === "/";
+const baseUrl = import.meta.env.BASE_URL.replace(/\/?$/, "/");
+const onHomepage =
+  Astro.url.pathname === baseUrl ||
+  Astro.url.pathname === baseUrl.replace(/\/$/, "");
 const sectionHref = (section: string) =>
-  onHomepage ? `#${section}` : `/#${section}`;
+  onHomepage ? `#${section}` : `${baseUrl}#${section}`;
 const phoneDisplay = "218-355-0992";
 const phoneHref = "+12183550992";
 const currentYear = new Date().getFullYear();

@@ -47,6 +47,8 @@ const heroPosterDesktop =
   "https://res.cloudinary.com/l5oyozuw/video/upload/so_0.2,c_fill,g_center,w_1080,ar_16:9/q_auto/f_auto/reel.jpg";
 const heroPosterMobile =
   "https://res.cloudinary.com/l5oyozuw/video/upload/so_0.2,c_fill,g_center,w_900,ar_9:16/q_auto/f_auto/reel.jpg";
+const baseUrl = import.meta.env.BASE_URL.replace(/\/?$/, "/");
+const withBase = (path: string) => `${baseUrl}${path.replace(/^\//, "")}`;
 ---
 
 <BaseLayout
@@ -217,7 +219,7 @@ const heroPosterMobile =
                 data-service-trigger
                 data-title={service.data.title}
                 data-summary={service.data.summary}
-                data-image={service.data.image}
+                data-image={withBase(service.data.image)}
                 data-image-alt={service.data.imageAlt}
                 aria-pressed={index === 0 ? "true" : "false"}
                 aria-expanded={index === 0 ? "true" : "false"}
@@ -235,7 +237,7 @@ const heroPosterMobile =
                   </small>
                   <img
                     class="mt-4 hidden aspect-[16/10] w-full rounded-xl object-cover max-[48rem]:group-aria-expanded:block"
-                    src={service.data.image}
+                    src={withBase(service.data.image)}
                     alt={service.data.imageAlt}
                     width="768"
                     height="1024"
@@ -264,7 +266,7 @@ const heroPosterMobile =
         >
           <img
             class="absolute inset-0 h-full w-full object-cover"
-            src={services[0].data.image}
+            src={withBase(services[0].data.image)}
             alt={services[0].data.imageAlt}
             width="768"
             height="1024"
