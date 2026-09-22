@@ -1,0 +1,140 @@
+{
+  "tool": "build-phase",
+  "version": 2,
+  "startedAt": "2026-09-21T13:06:30.320Z",
+  "comp": ".impeccable/mocks/homepage-canon-01.png",
+  "direction": "6bc35788",
+  "breakpoint": "1672x941",
+  "artifact": null,
+  "phase": "plates",
+  "phases": {
+    "comps": {
+      "status": "closed",
+      "openedAt": "2026-09-21T13:06:30.320Z",
+      "closedAt": "2026-09-21T13:15:28.350Z",
+      "attempts": 2,
+      "notes": [],
+      "gate": {
+        "ok": true,
+        "reasons": [],
+        "summary": "3 comps, 1 approved",
+        "approved": ".impeccable/mocks/homepage-canon-01.png",
+        "at": "2026-09-21T13:15:28.349Z"
+      },
+      "forced": null
+    },
+    "spec": {
+      "status": "closed",
+      "openedAt": "2026-09-21T13:15:28.370Z",
+      "closedAt": "2026-09-21T13:23:07.701Z",
+      "attempts": 1,
+      "notes": [],
+      "gate": {
+        "ok": true,
+        "reasons": [],
+        "summary": "22 regions, 6 plates, 11 text regions measured",
+        "at": "2026-09-21T13:23:07.700Z"
+      },
+      "forced": null
+    },
+    "plates": {
+      "status": "open",
+      "openedAt": "2026-09-21T13:23:07.701Z",
+      "closedAt": null,
+      "attempts": 3,
+      "notes": [],
+      "gate": {
+        "ok": false,
+        "reasons": [
+          "plate missing for hero-media: expected assets/plates/hero-media.png; produce it from /Users/alekbroman/.codex/skills/impeccable/scripts/impeccable comp-spec --crop hero-media with /Users/alekbroman/.codex/skills/impeccable/scripts/impeccable generate-image --ref <crop.png> --prompt-file <prompt.txt> --out <plate.png>",
+          "plate missing for brand-logo: expected assets/plates/brand-logo.png; produce it from /Users/alekbroman/.codex/skills/impeccable/scripts/impeccable comp-spec --crop brand-logo with /Users/alekbroman/.codex/skills/impeccable/scripts/impeccable generate-image --ref <crop.png> --prompt-file <prompt.txt> --out <plate.png>",
+          "plate missing for service-clearing: expected assets/plates/service-clearing.png; produce it from /Users/alekbroman/.codex/skills/impeccable/scripts/impeccable comp-spec --crop service-clearing with /Users/alekbroman/.codex/skills/impeccable/scripts/impeccable generate-image --ref <crop.png> --prompt-file <prompt.txt> --out <plate.png>",
+          "plate missing for service-grading: expected assets/plates/service-grading.png; produce it from /Users/alekbroman/.codex/skills/impeccable/scripts/impeccable comp-spec --crop service-grading with /Users/alekbroman/.codex/skills/impeccable/scripts/impeccable generate-image --ref <crop.png> --prompt-file <prompt.txt> --out <plate.png>",
+          "plate missing for service-foundation: expected assets/plates/service-foundation.png; produce it from /Users/alekbroman/.codex/skills/impeccable/scripts/impeccable comp-spec --crop service-foundation with /Users/alekbroman/.codex/skills/impeccable/scripts/impeccable generate-image --ref <crop.png> --prompt-file <prompt.txt> --out <plate.png>",
+          "plate missing for projects-media: expected assets/plates/projects-media.png; produce it from /Users/alekbroman/.codex/skills/impeccable/scripts/impeccable comp-spec --crop projects-media with /Users/alekbroman/.codex/skills/impeccable/scripts/impeccable generate-image --ref <crop.png> --prompt-file <prompt.txt> --out <plate.png>"
+        ],
+        "summary": "0/6 plates",
+        "at": "2026-09-21T13:28:39.705Z"
+      },
+      "forced": null
+    },
+    "hero": {
+      "status": "pending",
+      "openedAt": null,
+      "closedAt": null,
+      "attempts": 0,
+      "notes": [],
+      "gate": null,
+      "forced": null
+    },
+    "sections": {
+      "status": "pending",
+      "openedAt": null,
+      "closedAt": null,
+      "attempts": 0,
+      "notes": [],
+      "gate": null,
+      "forced": null
+    },
+    "motion": {
+      "status": "pending",
+      "openedAt": null,
+      "closedAt": null,
+      "attempts": 0,
+      "notes": [],
+      "gate": null,
+      "forced": null
+    },
+    "responsive": {
+      "status": "pending",
+      "openedAt": null,
+      "closedAt": null,
+      "attempts": 0,
+      "notes": [],
+      "gate": null,
+      "forced": null
+    },
+    "review": {
+      "status": "pending",
+      "openedAt": null,
+      "closedAt": null,
+      "attempts": 0,
+      "notes": [],
+      "gate": null,
+      "forced": null
+    }
+  },
+  "finish": null,
+  "plates": {
+    "hero-media": {
+      "status": "missing",
+      "score": null,
+      "size": null
+    },
+    "brand-logo": {
+      "status": "missing",
+      "score": null,
+      "size": null
+    },
+    "service-clearing": {
+      "status": "missing",
+      "score": null,
+      "size": null
+    },
+    "service-grading": {
+      "status": "missing",
+      "score": null,
+      "size": null
+    },
+    "service-foundation": {
+      "status": "missing",
+      "score": null,
+      "size": null
+    },
+    "projects-media": {
+      "status": "missing",
+      "score": null,
+      "size": null
+    }
+  }
+}

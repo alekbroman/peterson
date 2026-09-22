@@ -1,0 +1,26 @@
+---
+import { Image } from "astro:assets";
+import logoImage from "../assets/images/peterson-logo-themed.png";
+
+interface Props {
+  class?: string;
+  loading?: "eager" | "lazy";
+  sizes?: string;
+}
+
+const {
+  class: className = "block h-auto w-full",
+  loading = "lazy",
+  sizes = "256px",
+} = Astro.props;
+---
+
+<Image
+  class={className}
+  src={logoImage}
+  alt="Peterson Excavating & Landscaping"
+  widths={[224, 320, 448]}
+  {sizes}
+  format="webp"
+  {loading}
+/>

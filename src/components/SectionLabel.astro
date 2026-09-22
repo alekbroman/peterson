@@ -1,0 +1,22 @@
+---
+interface Props {
+  tone?: "light" | "dark" | "brand";
+}
+
+const { tone = "light" } = Astro.props;
+const toneClasses = {
+  light: "text-ink",
+  dark: "text-white/80",
+  brand: "text-white/85",
+};
+---
+
+<p
+  class:list={[
+    "mb-5 font-body text-[0.78rem] font-semibold tracking-[0.18em] uppercase",
+    toneClasses[tone],
+  ]}
+  data-section-label
+>
+  <slot />
+</p>

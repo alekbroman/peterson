@@ -1,0 +1,142 @@
+<script>
+  const forms = document.querySelectorAll<HTMLFormElement>(
+    "[data-validated-form]",
+  );
+
+  const getError = (form: HTMLFormElement, id: string) =>
+    form.querySelector<HTMLElement>(`[data-error-for="${id}"]`);
+
+  const setControlState = (
+    form: HTMLFormElement,
+    control: HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement,
+  ) => {
+    const valid = control.checkValidity();
+    control.setAttribute("aria-invalid", String(!valid));
+    const error = getError(form, control.id);
+    if (error) {
+      error.textContent = valid
+        ? ""
+        : (control.dataset.errorMessage ?? control.validationMessage);
+      error.toggleAttribute("data-visible", !valid);
+    }
+    return valid;
+  };
+
+  const setGroupState = (fieldset: HTMLFieldSetElement) => {
+    const checked = fieldset.querySelector<HTMLInputElement>(
+      'input[type="checkbox"]:checked, input[type="radio"]:checked',
+    );
+    const valid = Boolean(checked);
+    fieldset.setAttribute("aria-invalid", String(!valid));
+    const error = fieldset.querySelector<HTMLElement>("[data-group-error]");
+    if (error) {
+      error.toggleAttribute("data-visible", !valid);
+    }
+    return valid;
+  };
+
+  forms.forEach((form) => {
+    const controls = Array.from(
+      form.querySelectorAll<
+        HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+      >(
+        'input:not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="hidden"]), textarea, select',
+      ),
+    );
+    const groups = Array.from(
+      form.querySelectorAll<HTMLFieldSetElement>("[data-required-group]"),
+    );
+
+    controls.forEach((control) => {
+      control.addEventListener("blur", () => setControlState(form, control));
+      control.addEventListener("input", () => {
+        if (control.getAttribute("aria-invalid") === "true") {
+          setControlState(form, control);
+        }
+      });
+    });
+
+    groups.forEach((group) => {
+      group.addEventListener("change", () => setGroupState(group));
+    });
+
+    form
+      .querySelectorAll<HTMLInputElement>("[data-file-input]")
+      .forEach((input) => {
+        const output = form.querySelector<HTMLElement>(
+          `[data-file-list="${input.id}"]`,
+        );
+        input.addEventListener("change", () => {
+          if (!output) return;
+          const names = Array.from(input.files ?? []).map((file) => file.name);
+          output.textContent = names.length
+            ? names.join(", ")
+            : "No files selected";
+        });
+      });
+
+    const fulfillment = form.querySelectorAll<HTMLInputElement>(
+      'input[name="fulfillment"]',
+    );
+    const deliveryFields = form.querySelector<HTMLElement>(
+      "[data-delivery-fields]",
+    );
+    const deliveryControls = Array.from(
+      deliveryFields?.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>(
+        "input, textarea",
+      ) ?? [],
+    );
+
+    const syncDeliveryFields = () => {
+      if (!deliveryFields) return;
+      const selected = form.querySelector<HTMLInputElement>(
+        'input[name="fulfillment"]:checked',
+      );
+      const needsDelivery = selected?.value === "Delivery";
+      deliveryFields.toggleAttribute("hidden", !needsDelivery);
+      deliveryControls.forEach((control) => {
+        control.disabled = !needsDelivery;
+        control.required = needsDelivery;
+        if (!needsDelivery) {
+          control.removeAttribute("aria-invalid");
+          const error = getError(form, control.id);
+          error?.removeAttribute("data-visible");
+        }
+      });
+    };
+
+    fulfillment.forEach((control) =>
+      control.addEventListener("change", syncDeliveryFields),
+    );
+    syncDeliveryFields();
+
+    form.addEventListener("submit", (event) => {
+      let valid = true;
+      controls.forEach((control) => {
+        if (!control.disabled && !setControlState(form, control)) valid = false;
+      });
+      groups.forEach((group) => {
+        if (!setGroupState(group)) valid = false;
+      });
+
+      if (!valid) {
+        event.preventDefault();
+        const summary = form.querySelector<HTMLElement>("[data-form-errors]");
+        summary?.setAttribute("data-visible", "");
+        const firstInvalid = form.querySelector<HTMLElement>(
+          '[aria-invalid="true"] input, input[aria-invalid="true"], textarea[aria-invalid="true"], select[aria-invalid="true"]',
+        );
+        firstInvalid?.focus();
+        return;
+      }
+
+      const submit = form.querySelector<HTMLButtonElement>(
+        'button[type="submit"]',
+      );
+      if (submit) {
+        submit.disabled = true;
+        submit.textContent = submit.dataset.pendingLabel ?? "Sending request…";
+      }
+    });
+  });
+</script>

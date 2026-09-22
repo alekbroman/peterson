@@ -1,0 +1,7 @@
+dist/
+node_modules/
+.impeccable/build/
+.impeccable/mocks/
+.impeccable/questions/
+.impeccable/homepage-direction-options.json
+pnpm-lock.yaml

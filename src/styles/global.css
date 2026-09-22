@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+@theme {
+  --color-burgundy: #591024;
+  --color-charcoal: #151515;
+  --color-earth-charcoal: #252321;
+  --color-ink: #1f2326;
+  --color-stone: #ececea;
+  --color-mist: #f6f6f3;
+  --color-muted: #62676a;
+  --color-line: #c9c9c4;
+  --color-warm-sand: #d5c7ad;
+  --color-warm-sand-light: #e4dccd;
+  --font-display: "Barlow Condensed", sans-serif;
+  --font-body: "Barlow", sans-serif;
+  --spacing-gutter: clamp(1.25rem, 4vw, 4.75rem);
+  --spacing-section: clamp(5.5rem, 10vw, 10rem);
+  --ease-site: cubic-bezier(0.16, 1, 0.3, 1);
+}

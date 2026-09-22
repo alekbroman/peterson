@@ -1,0 +1,199 @@
+---
+import { Check, ChevronDown } from "@lucide/astro";
+import FormEnhancer from "./FormEnhancer.astro";
+import GeneralInquiryForm from "./GeneralInquiryForm.astro";
+import MaterialsEstimateForm from "./MaterialsEstimateForm.astro";
+import ProjectEstimateForm from "./ProjectEstimateForm.astro";
+---
+
+<div data-request-forms>
+  <div
+    class="grid grid-cols-3 gap-px overflow-hidden rounded-t-2xl border border-b-0 border-line bg-line max-[62rem]:hidden"
+    role="tablist"
+    aria-label="Choose a request form"
+  >
+    <button
+      class="group grid min-h-32 grid-rows-[1.5rem_auto] content-start gap-2 bg-earth-charcoal px-6 py-5 text-left text-white transition-colors aria-selected:bg-mist aria-selected:text-ink hover:bg-earth-charcoal/80"
+      id="project-form-tab"
+      type="button"
+      role="tab"
+      aria-selected="true"
+      aria-controls="project-form-panel"
+      data-request-form-tab="project"
+    >
+      <span class="grid min-h-6 grid-cols-[minmax(0,1fr)_auto] items-center gap-3">
+        <span class="truncate text-xs font-semibold tracking-[0.12em] text-warm-sand uppercase group-aria-selected:text-burgundy">
+          Excavation and site work
+        </span>
+        <span class="invisible flex items-center gap-1.5 text-xs font-semibold tracking-[0.08em] text-burgundy uppercase group-aria-selected:visible">
+          <Check class="w-4" stroke-width={2.2} aria-hidden="true" />
+          Selected
+        </span>
+      </span>
+      <strong class="block min-h-[2em] font-display text-[clamp(1.75rem,3vw,2.6rem)] leading-none">
+        Project estimate
+      </strong>
+    </button>
+    <button
+      class="group grid min-h-32 grid-rows-[1.5rem_auto] content-start gap-2 bg-earth-charcoal px-6 py-5 text-left text-white transition-colors aria-selected:bg-mist aria-selected:text-ink hover:bg-earth-charcoal/80"
+      id="materials-form-tab"
+      type="button"
+      role="tab"
+      aria-selected="false"
+      aria-controls="materials-form-panel"
+      tabindex="-1"
+      data-request-form-tab="materials"
+    >
+      <span class="grid min-h-6 grid-cols-[minmax(0,1fr)_auto] items-center gap-3">
+        <span class="truncate text-xs font-semibold tracking-[0.12em] text-warm-sand uppercase group-aria-selected:text-burgundy">
+          Aggregate pickup or delivery
+        </span>
+        <span class="invisible flex items-center gap-1.5 text-xs font-semibold tracking-[0.08em] text-burgundy uppercase group-aria-selected:visible">
+          <Check class="w-4" stroke-width={2.2} aria-hidden="true" />
+          Selected
+        </span>
+      </span>
+      <strong class="block min-h-[2em] font-display text-[clamp(1.75rem,3vw,2.6rem)] leading-none">
+        Materials quote
+      </strong>
+    </button>
+    <button
+      class="group grid min-h-32 grid-rows-[1.5rem_auto] content-start gap-2 bg-earth-charcoal px-6 py-5 text-left text-white transition-colors aria-selected:bg-mist aria-selected:text-ink hover:bg-earth-charcoal/80"
+      id="general-form-tab"
+      type="button"
+      role="tab"
+      aria-selected="false"
+      aria-controls="general-form-panel"
+      tabindex="-1"
+      data-request-form-tab="general"
+    >
+      <span class="grid min-h-6 grid-cols-[minmax(0,1fr)_auto] items-center gap-3">
+        <span class="truncate text-xs font-semibold tracking-[0.12em] text-warm-sand uppercase group-aria-selected:text-burgundy">
+          Questions and follow-up
+        </span>
+        <span class="invisible flex items-center gap-1.5 text-xs font-semibold tracking-[0.08em] text-burgundy uppercase group-aria-selected:visible">
+          <Check class="w-4" stroke-width={2.2} aria-hidden="true" />
+          Selected
+        </span>
+      </span>
+      <strong class="block min-h-[2em] font-display text-[clamp(1.75rem,3vw,2.6rem)] leading-none">
+        Ask a question
+      </strong>
+    </button>
+  </div>
+
+  <div class="hidden max-[62rem]:block">
+    <label
+      class="mb-2 block text-xs font-semibold tracking-[0.12em] text-warm-sand uppercase"
+      for="mobile-request-form-select"
+    >
+      How can we help?
+    </label>
+    <div class="relative">
+      <select
+        class="min-h-16 w-full appearance-none rounded-xl border border-line bg-mist px-4 py-3 pr-12 text-base font-semibold text-ink outline-none transition-colors hover:border-muted focus-visible:border-burgundy focus-visible:ring-2 focus-visible:ring-burgundy/18"
+        id="mobile-request-form-select"
+        data-request-form-select
+      >
+        <option value="project">Project estimate</option>
+        <option value="materials">Materials quote</option>
+        <option value="general">Ask a question</option>
+      </select>
+      <ChevronDown
+        class="pointer-events-none absolute top-1/2 right-4 w-5 -translate-y-1/2 text-burgundy"
+        stroke-width={2.2}
+        aria-hidden="true"
+      />
+    </div>
+  </div>
+
+  <div class="rounded-b-2xl border-x border-b border-line bg-mist px-[clamp(1.25rem,5vw,5rem)] py-[clamp(3rem,7vw,6rem)] text-ink max-[62rem]:mt-4 max-[62rem]:rounded-2xl max-[62rem]:border">
+    <div
+      class="mx-auto max-w-[58rem]"
+      id="project-form-panel"
+      role="tabpanel"
+      aria-labelledby="project-form-tab"
+      data-request-form-panel="project"
+    >
+      <ProjectEstimateForm />
+    </div>
+    <div
+      class="mx-auto max-w-[58rem]"
+      id="materials-form-panel"
+      role="tabpanel"
+      aria-labelledby="materials-form-tab"
+      data-request-form-panel="materials"
+      hidden
+    >
+      <MaterialsEstimateForm />
+    </div>
+    <div
+      class="mx-auto max-w-[58rem]"
+      id="general-form-panel"
+      role="tabpanel"
+      aria-labelledby="general-form-tab"
+      data-request-form-panel="general"
+      hidden
+    >
+      <GeneralInquiryForm />
+    </div>
+  </div>
+</div>
+
+<FormEnhancer />
+
+<script>
+  const requestForms = document.querySelector<HTMLElement>(
+    "[data-request-forms]",
+  );
+  const tabs = Array.from(
+    requestForms?.querySelectorAll<HTMLButtonElement>(
+      "[data-request-form-tab]",
+    ) ?? [],
+  );
+  const panels = Array.from(
+    requestForms?.querySelectorAll<HTMLElement>("[data-request-form-panel]") ??
+      [],
+  );
+  const mobileSelect = requestForms?.querySelector<HTMLSelectElement>(
+    "[data-request-form-select]",
+  );
+
+  const selectRequestForm = (kind: string, focusTab = false) => {
+    tabs.forEach((tab) => {
+      const selected = tab.dataset.requestFormTab === kind;
+      tab.setAttribute("aria-selected", String(selected));
+      tab.tabIndex = selected ? 0 : -1;
+      if (selected && focusTab) tab.focus();
+    });
+    panels.forEach((panel) => {
+      panel.hidden = panel.dataset.requestFormPanel !== kind;
+    });
+    if (mobileSelect) mobileSelect.value = kind;
+  };
+
+  tabs.forEach((tab, index) => {
+    tab.addEventListener("click", () => {
+      selectRequestForm(tab.dataset.requestFormTab ?? "project");
+    });
+    tab.addEventListener("keydown", (event) => {
+      if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+      event.preventDefault();
+      const direction = event.key === "ArrowRight" ? 1 : -1;
+      const next = tabs[(index + direction + tabs.length) % tabs.length];
+      selectRequestForm(next.dataset.requestFormTab ?? "project", true);
+    });
+  });
+
+  mobileSelect?.addEventListener("change", () => {
+    selectRequestForm(mobileSelect.value);
+  });
+
+  document
+    .querySelectorAll<HTMLElement>("[data-select-request-form]")
+    .forEach((trigger) => {
+      trigger.addEventListener("click", () => {
+        selectRequestForm(trigger.dataset.selectRequestForm ?? "project");
+      });
+    });
+</script>

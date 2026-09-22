@@ -1,0 +1,1 @@
+SOURCE: Client-supplied logo from the project root file logo.png. Preserve the original lockup, letterforms, wording, proportions, and burgundy color; a CSS white treatment is permitted by the client for contrast.

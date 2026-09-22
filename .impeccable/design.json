@@ -1,0 +1,349 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-21T17:56:59Z",
+  "title": "Design System: Peterson Excavating",
+  "extensions": {
+    "colorMeta": {
+      "peterson-burgundy": {
+        "role": "primary",
+        "displayName": "Peterson Burgundy",
+        "tonalRamp": [
+          "oklch(15% 0.075 8)",
+          "oklch(26% 0.11 8)",
+          "oklch(37% 0.13 8)",
+          "oklch(48% 0.14 8)",
+          "oklch(60% 0.12 8)",
+          "oklch(72% 0.09 8)",
+          "oklch(84% 0.05 8)",
+          "oklch(95% 0.02 8)"
+        ]
+      },
+      "charcoal": {
+        "role": "neutral",
+        "displayName": "Site Charcoal",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(26% 0 0)",
+          "oklch(37% 0 0)",
+          "oklch(48% 0 0)",
+          "oklch(60% 0 0)",
+          "oklch(72% 0 0)",
+          "oklch(84% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      },
+      "earth-charcoal": {
+        "role": "neutral",
+        "displayName": "Earth Charcoal",
+        "tonalRamp": [
+          "oklch(15% 0.008 70)",
+          "oklch(26% 0.008 70)",
+          "oklch(37% 0.008 70)",
+          "oklch(48% 0.008 70)",
+          "oklch(60% 0.007 70)",
+          "oklch(72% 0.006 70)",
+          "oklch(84% 0.004 70)",
+          "oklch(95% 0.002 70)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Hard Ink",
+        "tonalRamp": [
+          "oklch(15% 0.006 230)",
+          "oklch(26% 0.006 230)",
+          "oklch(37% 0.006 230)",
+          "oklch(48% 0.006 230)",
+          "oklch(60% 0.006 230)",
+          "oklch(72% 0.005 230)",
+          "oklch(84% 0.004 230)",
+          "oklch(95% 0.002 230)"
+        ]
+      },
+      "cool-stone": {
+        "role": "neutral",
+        "displayName": "Cool Stone",
+        "tonalRamp": [
+          "oklch(15% 0.005 100)",
+          "oklch(26% 0.005 100)",
+          "oklch(37% 0.005 100)",
+          "oklch(48% 0.005 100)",
+          "oklch(60% 0.005 100)",
+          "oklch(72% 0.004 100)",
+          "oklch(84% 0.003 100)",
+          "oklch(95% 0.002 100)"
+        ]
+      },
+      "mist": {
+        "role": "neutral",
+        "displayName": "Ground Mist",
+        "tonalRamp": [
+          "oklch(15% 0.004 100)",
+          "oklch(26% 0.004 100)",
+          "oklch(37% 0.004 100)",
+          "oklch(48% 0.004 100)",
+          "oklch(60% 0.004 100)",
+          "oklch(72% 0.003 100)",
+          "oklch(84% 0.002 100)",
+          "oklch(95% 0.002 100)"
+        ]
+      },
+      "white": {
+        "role": "neutral",
+        "displayName": "Clean White",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(26% 0 0)",
+          "oklch(37% 0 0)",
+          "oklch(48% 0 0)",
+          "oklch(60% 0 0)",
+          "oklch(72% 0 0)",
+          "oklch(84% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Weathered Gray",
+        "tonalRamp": [
+          "oklch(15% 0.008 220)",
+          "oklch(26% 0.008 220)",
+          "oklch(37% 0.008 220)",
+          "oklch(48% 0.008 220)",
+          "oklch(60% 0.007 220)",
+          "oklch(72% 0.006 220)",
+          "oklch(84% 0.004 220)",
+          "oklch(95% 0.002 220)"
+        ]
+      },
+      "structural-line": {
+        "role": "neutral",
+        "displayName": "Survey Line",
+        "tonalRamp": [
+          "oklch(15% 0.004 100)",
+          "oklch(26% 0.004 100)",
+          "oklch(37% 0.004 100)",
+          "oklch(48% 0.004 100)",
+          "oklch(60% 0.004 100)",
+          "oklch(72% 0.003 100)",
+          "oklch(84% 0.003 100)",
+          "oklch(95% 0.002 100)"
+        ]
+      },
+      "warm-sand": {
+        "role": "neutral",
+        "displayName": "Warm Sand",
+        "tonalRamp": [
+          "oklch(15% 0.025 78)",
+          "oklch(26% 0.03 78)",
+          "oklch(37% 0.035 78)",
+          "oklch(48% 0.04 78)",
+          "oklch(60% 0.04 78)",
+          "oklch(72% 0.035 78)",
+          "oklch(84% 0.025 78)",
+          "oklch(95% 0.01 78)"
+        ]
+      },
+      "warm-sand-light": {
+        "role": "neutral",
+        "displayName": "Pale Sand",
+        "tonalRamp": [
+          "oklch(15% 0.018 78)",
+          "oklch(26% 0.022 78)",
+          "oklch(37% 0.025 78)",
+          "oklch(48% 0.028 78)",
+          "oklch(60% 0.028 78)",
+          "oklch(72% 0.024 78)",
+          "oklch(84% 0.018 78)",
+          "oklch(95% 0.008 78)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Short primary statements and page titles."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Major section openings and chapter transitions."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Service names, proof cards, and feature headings."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Plainspoken project information and explanations."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Compact controls, statuses, and contextual metadata."
+      }
+    },
+    "shadows": [
+      {
+        "name": "fixed-header",
+        "value": "0 1rem 2.5rem rgba(0, 0, 0, 0.18)",
+        "purpose": "Separates the fixed header after it gains a charcoal field on scroll."
+      },
+      {
+        "name": "mobile-menu",
+        "value": "0 1.25rem 2.5rem rgba(0, 0, 0, 0.24)",
+        "purpose": "Separates the open mobile navigation panel from page content."
+      },
+      {
+        "name": "media-legibility",
+        "value": "0 0.6rem 2rem rgba(0, 0, 0, 0.2)",
+        "purpose": "Protects large display text over authentic project media."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Confident easing for navigation state and directional micro-movement."
+      },
+      {
+        "name": "state-transition",
+        "value": "220ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Header, menu, and arrow state changes."
+      },
+      {
+        "name": "hero-drift",
+        "value": "16s cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Restrained media drift with explicit pause and reduced-motion support."
+      }
+    ],
+    "breakpoints": [
+      { "name": "navigation-collapse", "value": "72rem" },
+      { "name": "layout-stack", "value": "62rem" },
+      { "name": "compact", "value": "48rem" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Action",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The decisive estimate or forward action on light or media-backed fields.",
+      "html": "<button class=\"ds-button-primary\" type=\"button\">Request an estimate <svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M5 12h14M13 6l6 6-6 6\"/></svg></button>",
+      "css": ".ds-button-primary { min-height: 3.75rem; display: inline-flex; align-items: center; justify-content: center; gap: .8rem; padding: .95rem 1.35rem; color: var(--white, #fff); background: rgba(89,16,36,.96); border: 1px solid transparent; border-radius: .75rem; font: 600 .9rem/1.2 var(--body, 'Barlow', sans-serif); cursor: pointer; transition: background-color 220ms var(--ease-out, cubic-bezier(.16,1,.3,1)); } .ds-button-primary svg { width: 1.2rem; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; } .ds-button-primary:hover,.ds-button-primary:active { background: #591024; } .ds-button-primary:focus-visible { outline: 3px solid #d9f0f2; outline-offset: 4px; }"
+    },
+    {
+      "name": "Secondary Action",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "A quieter call or text action designed for dark media fields.",
+      "html": "<button class=\"ds-button-secondary\" type=\"button\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M22 16.9v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.78.62 2.63a2 2 0 0 1-.45 2.11L8 9.74a16 16 0 0 0 6 6l1.28-1.28a2 2 0 0 1 2.11-.45c.85.29 1.73.5 2.63.62A2 2 0 0 1 22 16.9z\"/></svg>Call or text</button>",
+      "css": ".ds-button-secondary { min-height: 3.75rem; display: inline-flex; align-items: center; justify-content: center; gap: .8rem; padding: .95rem 1.35rem; color: var(--white, #fff); background: rgba(15,15,15,.42); border: 1px solid rgba(255,255,255,.75); border-radius: .75rem; font: 600 .9rem/1.2 var(--body, 'Barlow', sans-serif); cursor: pointer; transition: background-color 220ms var(--ease-out, cubic-bezier(.16,1,.3,1)); } .ds-button-secondary svg { width: 1.2rem; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; } .ds-button-secondary:hover { background: rgba(15,15,15,.72); } .ds-button-secondary:focus-visible { outline: 3px solid #d9f0f2; outline-offset: 4px; } .ds-button-secondary:active { background: rgba(15,15,15,.9); }"
+    },
+    {
+      "name": "Text Field",
+      "kind": "input",
+      "description": "The standard white input used across project and material estimate forms.",
+      "html": "<label class=\"ds-field\">Project location<input type=\"text\" placeholder=\"Street address or nearest community\"></label>",
+      "css": ".ds-field { display: grid; gap: .5rem; color: var(--ink, #1f2326); font: 600 1rem/1.4 var(--body, 'Barlow', sans-serif); } .ds-field input { min-height: 3.5rem; width: 100%; padding: .75rem 1rem; color: var(--ink, #1f2326); background: var(--white, #fff); border: 1px solid var(--structural-line, #c9c9c4); border-radius: .75rem; font: 400 1rem/1.55 var(--body, 'Barlow', sans-serif); caret-color: var(--peterson-burgundy, #591024); outline: none; transition: border-color 220ms var(--ease-out, cubic-bezier(.16,1,.3,1)), box-shadow 220ms var(--ease-out, cubic-bezier(.16,1,.3,1)); } .ds-field input:hover { border-color: var(--muted, #62676a); } .ds-field input:focus-visible { border-color: var(--peterson-burgundy, #591024); box-shadow: 0 0 0 2px rgba(89,16,36,.18); } .ds-field input[aria-invalid='true'] { border-color: var(--peterson-burgundy, #591024); background: #fff8fa; }"
+    },
+    {
+      "name": "Desktop Navigation",
+      "kind": "nav",
+      "description": "The restrained primary link row used inside the fixed site header.",
+      "html": "<nav class=\"ds-navigation\" aria-label=\"Primary navigation\"><a href=\"#services\">Services</a><a href=\"#projects\">Our work</a><a href=\"#about\">About</a><a href=\"#materials\">Materials</a><a href=\"#service-area\">Service area</a><a href=\"#contact\">Contact</a></nav>",
+      "css": ".ds-navigation { display: flex; justify-content: center; gap: clamp(1rem,2vw,2.25rem); padding: 1rem 1.5rem; color: var(--white, #fff); background: rgba(89,16,36,.96); font: 500 .92rem/1.4 var(--body, 'Barlow', sans-serif); } .ds-navigation a { color: inherit; text-decoration-color: transparent; text-decoration-thickness: 1px; text-underline-offset: .45rem; transition: text-decoration-color 220ms var(--ease-out, cubic-bezier(.16,1,.3,1)); } .ds-navigation a:hover { text-decoration-line: underline; text-decoration-color: currentColor; } .ds-navigation a:focus-visible { outline: 3px solid #d9f0f2; outline-offset: 4px; } .ds-navigation a:active { color: #e4dccd; }"
+    },
+    {
+      "name": "Service Row",
+      "kind": "custom",
+      "description": "A rule-separated capability selector with practical support copy.",
+      "html": "<button class=\"ds-service-row\" type=\"button\" aria-pressed=\"false\"><span><strong>Complete Site Work</strong><small>One coordinated path from clearing through preparation.</small></span><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M5 12h14M13 6l6 6-6 6\"/></svg></button>",
+      "css": ".ds-service-row { width: 100%; display: grid; grid-template-columns: 1fr auto; gap: 1rem; align-items: start; padding: 1.35rem 1.5rem; color: var(--ink, #1f2326); background: transparent; border: 0; border-top: 1px solid var(--line, #c9c9c4); border-radius: .75rem; text-align: left; cursor: pointer; } .ds-service-row strong,.ds-service-row small { display: block; } .ds-service-row strong { font: 700 2rem/1 var(--display, 'Barlow Condensed', sans-serif); } .ds-service-row small { margin-top: .45rem; color: var(--muted, #62676a); font: 400 .94rem/1.4 var(--body, 'Barlow', sans-serif); } .ds-service-row svg { width: 1.2rem; fill: none; stroke: currentColor; stroke-width: 1.5; transition: transform 220ms var(--ease-out, cubic-bezier(.16,1,.3,1)); } .ds-service-row:hover svg { transform: translateX(.35rem); } .ds-service-row:focus-visible { outline: 3px solid #d9f0f2; outline-offset: 4px; } .ds-service-row:active,.ds-service-row[aria-pressed='true'] { color: var(--white, #fff); background: rgba(89,16,36,.96); } .ds-service-row:active small,.ds-service-row[aria-pressed='true'] small { color: rgba(255,255,255,.78); }"
+    },
+    {
+      "name": "Project Proof Card",
+      "kind": "card",
+      "description": "A rounded dark project frame that lets authentic work and a short title lead.",
+      "html": "<article class=\"ds-project-card\"><span>Featured project</span><h3>Before, during, and finished</h3><p>Complete residential site work shown from first cut through final grade.</p></article>",
+      "css": ".ds-project-card { min-height: 24rem; display: flex; flex-direction: column; justify-content: end; padding: clamp(2rem,5vw,4rem); color: var(--white, #fff); background: var(--earth-charcoal, #252321); border: 1px solid rgba(255,255,255,.24); border-radius: 1rem; } .ds-project-card span { color: #d5c7ad; font: 600 .78rem/1.4 var(--body, 'Barlow', sans-serif); letter-spacing: .1em; text-transform: uppercase; } .ds-project-card h3 { max-width: 10ch; margin: 1rem 0; font: 700 clamp(3rem,6vw,6rem)/.94 var(--display, 'Barlow Condensed', sans-serif); letter-spacing: -.035em; } .ds-project-card p { max-width: 36rem; margin: 0; color: rgba(255,255,255,.64); font: 400 1rem/1.55 var(--body, 'Barlow', sans-serif); } .ds-project-card:focus-within { outline: 3px solid #d9f0f2; outline-offset: 4px; }"
+    },
+    {
+      "name": "Material Row",
+      "kind": "custom",
+      "description": "A compact, border-separated inventory line for Midway Pit materials.",
+      "html": "<div class=\"ds-material-row\"><strong>Class 5</strong><small>Availability varies</small></div>",
+      "css": ".ds-material-row { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; padding: 1rem 1.25rem; color: var(--white, #fff); background: var(--peterson-burgundy, #591024); border: 1px solid rgba(255,255,255,.25); border-radius: 1rem; } .ds-material-row strong { font: 700 1.7rem/1 var(--display, 'Barlow Condensed', sans-serif); } .ds-material-row small { color: #d5c7ad; font: 600 .72rem/1.4 var(--body, 'Barlow', sans-serif); letter-spacing: .08em; text-transform: uppercase; }"
+    },
+    {
+      "name": "Media Control",
+      "kind": "button",
+      "description": "The circular pause or play exception used over cinematic project media.",
+      "html": "<button class=\"ds-media-control\" type=\"button\" aria-pressed=\"false\" aria-label=\"Pause image motion\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M9 5v14M15 5v14\"/></svg></button>",
+      "css": ".ds-media-control { width: 4rem; aspect-ratio: 1; display: grid; place-items: center; color: var(--white, #fff); background: rgba(15,15,15,.48); border: 1px solid rgba(255,255,255,.8); border-radius: 50%; cursor: pointer; transition: background-color 220ms var(--ease-out, cubic-bezier(.16,1,.3,1)); } .ds-media-control svg { width: 1.4rem; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; } .ds-media-control:hover { background: rgba(15,15,15,.72); } .ds-media-control:focus-visible { outline: 3px solid #d9f0f2; outline-offset: 4px; } .ds-media-control:active,.ds-media-control[aria-pressed='true'] { background: #591024; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Modern Working Ground",
+    "overview": "Peterson Excavating presents residential excavation with cinematic scale and the clarity of a well-run job site. The system is direct, credible, and locally grounded: category-standard forms are executed with exceptional hierarchy, spacing, photography, and restraint rather than novelty or contractor-template decoration.\n\nIts visual world is modern and cutting edge without borrowing the gloss of a technology startup. Strong condensed type, broad tonal fields, crisp rules, authentic project media, and the Peterson burgundy create confidence; cool stone and mist keep the experience practical and legible. The result should feel built, not styled.\n\nThe supplied Peterson logo is authoritative and must remain unchanged. White logo treatment is permitted on dark fields, burgundy remains the defining brand color, and supporting copy must never broaden the offer into landscaping.",
+    "keyCharacteristics": [
+      "Cinematic residential excavation grounded in authentic work.",
+      "Condensed, forceful headings paired with plainspoken sans-serif text.",
+      "Peterson burgundy used decisively against charcoal, warm sand, cool stone, mist, and white.",
+      "Rounded, tactile controls with crisp rules and generous breathing room.",
+      "Flat tonal composition with structural depth only where function requires it."
+    ],
+    "rules": [
+      {
+        "name": "The Burgundy Is the Brand Rule",
+        "body": "Burgundy is the only defining accent; use it for action, selection, and authored chapter fields rather than sprinkling it across every surface.",
+        "section": "colors"
+      },
+      {
+        "name": "The Honest Neutral Rule",
+        "body": "Light sections remain cool and quiet, while dark sections stay charcoal rather than drifting into decorative gradients or blue-black tech styling. Materials use Earth Charcoal to preserve the alternating tonal rhythm without adding another full burgundy field.",
+        "section": "colors"
+      },
+      {
+        "name": "The Short Condensed Line Rule",
+        "body": "Display type makes impact through short line breaks and scale; never set dense paragraphs in Barlow Condensed.",
+        "section": "typography"
+      },
+      {
+        "name": "The Plainspoken Body Rule",
+        "body": "Barlow body copy is direct and specific. Avoid inflated claims, ornamental italics, and vague marketing language.",
+        "section": "typography"
+      },
+      {
+        "name": "The Chapter, Not Card Grid Rule",
+        "body": "Create hierarchy with broad fields, alignment, rules, and spacing. Do not break every idea into a floating card.",
+        "section": "layout"
+      },
+      {
+        "name": "The Flat-by-Default Rule",
+        "body": "Resting sections, controls, and containers do not float. Use tonal contrast and rules first; shadow only fixed or overlaid navigation.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Rounded, Not Bubbly Rule",
+        "body": "Rounded corners are the default across controls and containers. Use the two established radius steps consistently; reserve full pills for genuinely compact status controls and circles for icon-only controls.",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "Do use the exact supplied Peterson logo; white is permitted when contrast on a dark field requires it.",
+      "Do keep Peterson burgundy as the defining color and pair it with warm sand, charcoal, cool stone, mist, and white.",
+      "Do use authentic excavation photography and video as proof, with overlays only as needed for legibility.",
+      "Do build hierarchy with decisive type scale, broad tonal chapters, crisp rules, and generous spacing.",
+      "Do keep controls consistently rounded, tactile, accessible, and explicit about unavailable or pending actions.",
+      "Do respect visible focus, reduced-motion behavior, and reachable mobile contact paths."
+    ],
+    "donts": [
+      "Don't broaden copy or visual positioning into landscaping; the logo wording does not change the approved excavation scope.",
+      "Don't alter, redraw, crop into, or decorate the supplied Peterson logo.",
+      "Don't introduce black-and-yellow equipment-collage styling, badge-heavy contractor tropes, or novelty construction graphics.",
+      "Don't make the system feel like a technology startup through blue glows, glassmorphism, pill controls, excessive gradients, or floating card stacks.",
+      "Don't mix sharp-cornered fields or buttons into the rounded control system, or exaggerate the radius until standard controls read as pills.",
+      "Don't invent project proof, credentials, reviews, or polished media when authentic approved evidence is unavailable.",
+      "Don't treat the homepage's current first-viewport composition as a global layout requirement; surface briefs own page-specific composition."
+    ]
+  }
+}

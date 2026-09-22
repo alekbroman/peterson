@@ -1,0 +1,193 @@
+---
+import { Menu, X } from "@lucide/astro";
+import BrandLogo from "./BrandLogo.astro";
+
+interface Props {
+  variant?: "overlay" | "solid";
+}
+
+const { variant = "overlay" } = Astro.props;
+const onHomepage = Astro.url.pathname === "/";
+const sectionHref = (section: string) =>
+  onHomepage ? `#${section}` : `/#${section}`;
+const homeHref = onHomepage ? "#main-content" : "/";
+const focusRing =
+  "focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-current";
+const navLink = `${focusRing} py-3 text-current underline-offset-[0.45rem] decoration-1 hover:underline focus-visible:underline max-[72rem]:border-b max-[72rem]:border-ink/15 max-[72rem]:text-[1.1rem]`;
+---
+
+<header
+  class="group/header site-header isolate fixed inset-x-0 top-0 z-50 grid min-h-24 grid-cols-[minmax(13rem,18rem)_1fr_auto] items-center gap-[clamp(1.5rem,3vw,3.5rem)] bg-transparent px-gutter py-5 text-stone data-[menu-open]:text-ink data-[scrolled]:text-ink max-[72rem]:grid-cols-[minmax(12rem,15rem)_1fr_auto] max-[48rem]:grid-cols-[minmax(10rem,12rem)_1fr_auto] max-[48rem]:gap-4"
+  data-site-header
+  data-variant={variant}
+  data-scrolled={variant === "solid" ? "" : undefined}
+  style={
+    variant === "solid"
+      ? "--header-reveal-top: 0px;"
+      : "--header-reveal-top: 100%;"
+  }
+>
+  <span
+    class:list={[
+      "pointer-events-none absolute inset-0 -z-10 border-b border-line bg-mist/95 [clip-path:inset(var(--header-reveal-top)_0_0_0)] group-data-[menu-open]/header:[clip-path:inset(0_0_0_0)]",
+      variant === "solid" && "[clip-path:inset(0_0_0_0)]",
+    ]}
+    aria-hidden="true"
+    data-header-surface
+  ></span>
+  <a
+    class:list={[
+      "relative z-10 block w-[min(100%,12.75rem)] max-[48rem]:w-[9.5rem]",
+      focusRing,
+    ]}
+    href={homeHref}
+    aria-label="Peterson Excavating & Landscaping home"
+  >
+    <BrandLogo
+      class="block h-auto w-full"
+      sizes="(max-width: 768px) 152px, 204px"
+      loading="eager"
+    />
+  </a>
+
+  <nav
+    class="relative z-10 flex justify-center gap-[clamp(1rem,2vw,2.25rem)] text-[0.92rem] font-medium max-[72rem]:hidden"
+    aria-label="Primary navigation"
+  >
+    <a class={navLink} href={sectionHref("services")}>
+      Services
+    </a>
+    <a class={navLink} href={sectionHref("why-peterson")}>
+      Why Peterson
+    </a>
+    <a class={navLink} href={sectionHref("testimonials")}>
+      Testimonials
+    </a>
+    <a class={navLink} href={sectionHref("materials")}>
+      Materials
+    </a>
+    <a class={navLink} href={sectionHref("service-area")}>
+      Service Area
+    </a>
+    <a class={navLink} href={sectionHref("contact")}>
+      Contact
+    </a>
+  </nav>
+
+  <button
+    class:list={[
+      "menu-toggle group relative z-10 col-start-3 hidden h-12 w-12 place-items-center justify-self-end overflow-hidden rounded-xl border-0 bg-transparent p-0 text-current max-[72rem]:grid",
+      focusRing,
+    ]}
+    type="button"
+    aria-expanded="false"
+    aria-controls="mobile-menu"
+    aria-label="Open navigation"
+  >
+    <Menu
+      class="menu-icon col-start-1 row-start-1 w-[1.4rem] group-aria-expanded:hidden"
+      stroke-width={1.8}
+      aria-hidden="true"
+    />
+    <X
+      class="close-icon col-start-1 row-start-1 hidden w-[1.4rem] group-aria-expanded:block"
+      stroke-width={1.8}
+      aria-hidden="true"
+    />
+  </button>
+
+  <nav
+    class="mobile-nav invisible pointer-events-none absolute inset-x-0 top-full z-0 hidden border-b border-line bg-mist/95 px-gutter pt-3 pb-8 text-ink group-data-[menu-open]/header:visible group-data-[menu-open]/header:pointer-events-auto max-[72rem]:grid max-[72rem]:[&>a:last-child]:border-b-0"
+    id="mobile-menu"
+    aria-label="Mobile navigation"
+    aria-hidden="true"
+    inert
+  >
+    <a class={navLink} href={sectionHref("services")}>
+      Services
+    </a>
+    <a class={navLink} href={sectionHref("why-peterson")}>
+      Why Peterson
+    </a>
+    <a class={navLink} href={sectionHref("testimonials")}>
+      Testimonials
+    </a>
+    <a class={navLink} href={sectionHref("materials")}>
+      Materials
+    </a>
+    <a class={navLink} href={sectionHref("service-area")}>
+      Service Area
+    </a>
+    <a class={navLink} href={sectionHref("contact")}>
+      Contact
+    </a>
+  </nav>
+</header>
+
+<script>
+  const header = document.querySelector<HTMLElement>("[data-site-header]");
+  const hero = document.querySelector<HTMLElement>("[data-motion-hero]");
+  const toggle = header?.querySelector<HTMLButtonElement>(".menu-toggle");
+  const menu = header?.querySelector<HTMLElement>(".mobile-nav");
+
+  const closeMenu = () => {
+    if (!toggle || !menu) return;
+    toggle.setAttribute("aria-expanded", "false");
+    toggle.setAttribute("aria-label", "Open navigation");
+    header?.removeAttribute("data-menu-open");
+    menu.setAttribute("aria-hidden", "true");
+    menu.setAttribute("inert", "");
+    syncHeader();
+  };
+
+  toggle?.addEventListener("click", () => {
+    if (!menu) return;
+    const willOpen = toggle.getAttribute("aria-expanded") !== "true";
+    toggle.setAttribute("aria-expanded", String(willOpen));
+    toggle.setAttribute(
+      "aria-label",
+      willOpen ? "Close navigation" : "Open navigation",
+    );
+    menu.setAttribute("aria-hidden", String(!willOpen));
+    if (willOpen) menu.removeAttribute("inert");
+    else menu.setAttribute("inert", "");
+    header?.toggleAttribute("data-menu-open", willOpen);
+  });
+
+  menu
+    ?.querySelectorAll("a")
+    .forEach((link) => link.addEventListener("click", closeMenu));
+
+  document.addEventListener("pointerdown", (event) => {
+    if (toggle?.getAttribute("aria-expanded") !== "true") return;
+    if (event.target instanceof Node && !header?.contains(event.target)) {
+      closeMenu();
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") closeMenu();
+  });
+
+  window
+    .matchMedia("(max-width: 72rem)")
+    .addEventListener("change", (event) => {
+      if (!event.matches) closeMenu();
+    });
+
+  let headerFrame = 0;
+  const syncHeader = () => {
+    if (!header) return;
+    if (header.dataset.variant === "solid") return;
+    cancelAnimationFrame(headerFrame);
+    headerFrame = requestAnimationFrame(() => {
+      const headerHeight = header.getBoundingClientRect().height;
+      const heroBottom = hero?.getBoundingClientRect().bottom ?? 0;
+      const revealTop = Math.min(headerHeight, Math.max(0, heroBottom));
+      header.style.setProperty("--header-reveal-top", `${revealTop}px`);
+      header.toggleAttribute("data-scrolled", revealTop <= headerHeight / 2);
+    });
+  };
+  syncHeader();
+  window.addEventListener("scroll", syncHeader, { passive: true });
+</script>

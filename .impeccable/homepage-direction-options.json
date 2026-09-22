@@ -1,0 +1,152 @@
+{
+  "title": "Choose the Peterson homepage world",
+  "question": "Choose the world that should shape the homepage brief, or re-roll for a fresh hand. Every option preserves the supplied Peterson lockup in burgundy or white, treats burgundy as the fixed brand color, and keeps the residential-first message and confirmed conversion hierarchy.",
+  "options": [
+    {
+      "id": "assigned",
+      "label": "Beneath the Grade",
+      "kicker": "THE ROLL",
+      "lineage": "geotechnical boring logs and site-section records",
+      "thesis": "The homepage reveals a finished homesite as the visible result of disciplined work below the surface.",
+      "palette": ["#711f35", "#1f292d", "#d7dde0", "#26a9b8"],
+      "materials": ["cool mineral paper", "soil-section hatching", "survey ticks", "authentic project media"],
+      "viewport": "The Peterson logo and estimate action sit above a full-width grade line: project video owns the land above it while a precise cutaway below names the complete sequence from clearing through finish preparation; the headline sits directly on the grade.",
+      "risk": "Without plain-language labels and warm residential proof, the technical discipline could feel like an engineering consultancy.",
+      "raised": [
+        {
+          "from": "VU meter bridge",
+          "raise": "Every service stage now resolves against one shared site-readiness scale rather than a loose collection of cards."
+        },
+        {
+          "from": "night-market sign river",
+          "raise": "Large, unmistakable wayfinding landmarks keep the technical world scannable for homeowners."
+        },
+        {
+          "from": "gravity-rain garden",
+          "raise": "The signature grade-line interaction demonstrates cause and effect instead of decorating the page."
+        }
+      ],
+      "comp": ".impeccable/mocks/decision/assigned-beneath-grade.png"
+    },
+    {
+      "id": "model-pick",
+      "label": "The Stake Book",
+      "kicker": "IMPECCABLE’S PICK",
+      "lineage": "surveyor field books, staking plans, and fluorescent site flags",
+      "thesis": "A homeowner sees the whole job organized as a confident field plan before the first bucket moves.",
+      "palette": ["#711f35", "#202629", "#eef0ed", "#e8ff3f"],
+      "materials": ["waterproof field-book stock", "graphite notation", "stake flags", "photo contact sheets"],
+      "viewport": "An asymmetrical field-book spread places the supplied logo in the binding margin, the headline and estimate action on a clean planning sheet, and an authentic project-video frame under numbered stake annotations that lead into the six service groups.",
+      "risk": "Construction-document language is familiar and effective, so timid execution could slip into a conventional blueprint theme.",
+      "comp": ".impeccable/mocks/decision/model-pick-stake-book.png"
+    },
+    {
+      "id": "challenger-zine",
+      "label": "The Sitework Field Guide",
+      "verdict": "competitive",
+      "lineage": "hand-drawn technical zines and annotated jobsite sketches",
+      "thesis": "Complete site work becomes a plainspoken, step-by-step guide a homeowner can understand at a glance.",
+      "palette": ["#711f35", "#171918", "#f3f0e7", "#d7ee39"],
+      "materials": ["marker annotation", "field sketches", "highlighter swipes", "authentic photo cut-ins"],
+      "viewport": "The real Peterson logo anchors a bright field-guide sheet; the headline, estimate button, and authentic video slot sit beside one annotated diagram tracing clearing, excavation, utilities, septic, driveway, and finish preparation.",
+      "case": "It matches the homeowner’s need for clarity, but its playful hand can undercut the seriousness and durability expected of excavation work.",
+      "risk": "Too much doodle language would make an experienced contractor feel casual or juvenile.",
+      "comp": ".impeccable/mocks/decision/challenger-field-guide.png",
+      "hero": "https://impeccable.style/worlds/cards/hand-drawn-zine-explainer-hero.webp",
+      "board": "https://impeccable.style/worlds/cards/hand-drawn-zine-explainer.webp"
+    },
+    {
+      "id": "challenger-video",
+      "label": "One Job at a Time",
+      "verdict": "competitive",
+      "lineage": "full-viewport vertical media surfaces",
+      "thesis": "Authentic work is the interface: each project fills the screen and proves one stage of complete site preparation.",
+      "palette": ["#711f35", "#090c0e", "#f3f4f2", "#9da7a3"],
+      "materials": ["full-bleed project video", "subtle film grain", "hard white labels", "burgundy action rail"],
+      "viewport": "A verified project video fills the page behind the Peterson logo and fixed estimate action; a restrained stage rail moves from raw parcel to ready homesite while call and text remain immediate on mobile.",
+      "case": "It gives authentic proof exceptional force, but one immersive project at a time makes service breadth slower to understand.",
+      "risk": "The feed grammar may feel fashionable and media-led rather than established and service-led.",
+      "comp": ".impeccable/mocks/decision/challenger-video.png",
+      "hero": "https://impeccable.style/worlds/cards/pop-culture-shelf-vertical-video-feed-surface-hero.webp",
+      "board": "https://impeccable.style/worlds/cards/pop-culture-shelf-vertical-video-feed-surface.webp"
+    },
+    {
+      "id": "challenger-depth",
+      "label": "Below the Surface",
+      "verdict": "competitive",
+      "lineage": "technical depth profiles and expedition logs",
+      "thesis": "The page descends through the hidden layers of a residential site, then returns to the finished grade with proof in hand.",
+      "palette": ["#711f35", "#081821", "#153542", "#68cbd1"],
+      "materials": ["depth-axis notation", "rock and soil imagery", "cool instrument lines", "illuminated media windows"],
+      "viewport": "A vertical depth rail crosses a wide authentic excavation frame; the headline and estimate action occupy the surface zone while utility, septic, foundation, drainage, and aggregate layers descend beneath it.",
+      "case": "The depth structure explains excavation beautifully, but its expedition lineage identifies less naturally with a residential customer than a real field record.",
+      "risk": "A dark technical atmosphere can feel remote unless balanced with daylight, homesites, and human-scale copy.",
+      "comp": ".impeccable/mocks/decision/challenger-depth.png",
+      "hero": "https://impeccable.style/worlds/cards/rivers-tides-ocean-depths-mesophotic-deep-dive-hero.webp",
+      "board": "https://impeccable.style/worlds/cards/rivers-tides-ocean-depths-mesophotic-deep-dive.webp"
+    },
+    {
+      "id": "challenger-vu",
+      "label": "Site Readiness Bridge",
+      "verdict": "declined",
+      "lineage": "recording-console VU meter bridges",
+      "thesis": "Six synchronized gauges show a property moving toward ready-to-build status.",
+      "palette": ["#711f35", "#f1eadb", "#1d2021", "#b43a32"],
+      "materials": ["meter glass", "black scale arcs", "steel labels", "warm instrument faces"],
+      "viewport": "A row of service-stage gauges sits beneath the headline and project frame.",
+      "case": "The synchronization is useful, but homeowners do not naturally identify excavation through audio instrumentation.",
+      "kept": "One shared readiness scale now unifies the assigned direction’s service stages.",
+      "risk": "The metaphor must be explained before it helps.",
+      "hero": "https://impeccable.style/worlds/cards/signals-instruments-vu-meter-bridge-hero.webp",
+      "board": "https://impeccable.style/worlds/cards/signals-instruments-vu-meter-bridge.webp"
+    },
+    {
+      "id": "challenger-market",
+      "label": "Jobsite Sign River",
+      "verdict": "declined",
+      "lineage": "night-market sign rivers translated into site markers",
+      "thesis": "Survey flags and temporary signs lead visitors through service zones like landmarks across a working site.",
+      "palette": ["#711f35", "#141718", "#f1b637", "#d6e9e6"],
+      "materials": ["reflective signs", "wet aggregate", "survey ribbon", "painted arrows"],
+      "viewport": "A route of jobsite markers crosses the project video toward the estimate action.",
+      "case": "The navigation is memorable, but the market lineage distracts from residential trust and complete-site-work clarity.",
+      "kept": "Large visual landmarks now make the assigned technical world easy to scan.",
+      "risk": "Color and signs can become noisy before they become useful.",
+      "hero": "https://impeccable.style/worlds/cards/wayfinding-cartography-signage-night-market-sign-river-hero.webp",
+      "board": "https://impeccable.style/worlds/cards/wayfinding-cartography-signage-night-market-sign-river.webp"
+    },
+    {
+      "id": "challenger-gravity",
+      "label": "Grade-Flow Garden",
+      "verdict": "declined",
+      "lineage": "interactive gravity-field gardens translated into drainage and grade",
+      "thesis": "Moving the grade line makes water, access, and site preparation visibly respond.",
+      "palette": ["#711f35", "#384744", "#7aa9b3", "#e6e7df"],
+      "materials": ["animated contour fields", "water paths", "terrain silhouettes", "survey points"],
+      "viewport": "A responsive terrain field surrounds the project message and estimate action.",
+      "case": "Cause and effect is compelling, but the surreal world weakens product clarity and could imply design services Peterson does not offer.",
+      "kept": "The assigned grade-line interaction must explain site consequence, not act as decoration.",
+      "risk": "A simulation can overpromise technical design capability.",
+      "hero": "https://impeccable.style/worlds/cards/dream-surreal-impossible-worlds-gravity-rain-garden-hero.webp",
+      "board": "https://impeccable.style/worlds/cards/dream-surreal-impossible-worlds-gravity-rain-garden.webp"
+    }
+  ],
+  "reroll": {
+    "registers": ["safer", "bolder"]
+  },
+  "buildPath": {
+    "value": "comp",
+    "toggle": true
+  },
+  "canon": true,
+  "canonCard": {
+    "label": "The category standard",
+    "thesis": "A polished excavation-company homepage built around a dark project-video hero, service cards, credentials, reviews, and a strong estimate button.",
+    "palette": ["#711f35", "#111315", "#f5f5f2", "#c6a15a"],
+    "materials": ["cinematic project photography", "clean grid", "bold sans typography", "equipment-detail crops"],
+    "viewport": "The supplied Peterson logo sits over a full-width project-video hero with Local Experience. Solid Results., Request an Estimate, Call, and Text; service cards begin below the fold.",
+    "risk": "It is easy to understand but intentionally resembles the best version of the category rather than owning a distinctive Peterson mechanism.",
+    "comp": ".impeccable/mocks/decision/canon.png"
+  },
+  "steer": true
+}

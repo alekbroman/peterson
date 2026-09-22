@@ -1,0 +1,656 @@
+---
+import { getCollection } from "astro:content";
+import {
+  ArrowDown,
+  ArrowRight,
+  ChevronDown,
+  MessageSquare,
+  Phone,
+  Quote,
+} from "@lucide/astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import RequestForms from "../components/RequestForms.astro";
+import SectionLabel from "../components/SectionLabel.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+
+const services = (await getCollection("services")).sort(
+  (a, b) => a.data.position - b.data.position,
+);
+const materials = (await getCollection("materials")).sort(
+  (a, b) => a.data.position - b.data.position,
+);
+
+interface Testimonial {
+  quote: string;
+  customer: string;
+  project: string;
+}
+
+// Add only customer-approved, verbatim reviews here.
+const approvedTestimonials: Testimonial[] = [];
+
+const focusRing =
+  "focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-[#d9f0f2]";
+const displayHeading =
+  "text-balance font-display font-bold leading-[0.94] tracking-[-0.035em]";
+const sectionHeading = `${displayHeading} text-[clamp(3rem,5.2vw,5.25rem)]`;
+const buttonBase =
+  "inline-flex min-h-15 items-center justify-center gap-[0.8rem] rounded-xl border border-transparent px-[1.35rem] py-[0.95rem] font-semibold max-[48rem]:w-full";
+const iconStroke = "w-[1.2rem] shrink-0";
+const phoneDisplay = "218-355-0992";
+const phoneHref = "+12183550992";
+const cloudinaryVideoBase = "https://res.cloudinary.com/l5oyozuw/video/upload";
+const heroVideoDesktop = `${cloudinaryVideoBase}/so_0.2,ac_none,c_fill,g_center,w_1080,ar_16:9/q_auto/f_auto/reel.mp4`;
+const heroVideoMobile = `${cloudinaryVideoBase}/so_0.2,ac_none,c_fill,g_center,w_900,ar_9:16/q_auto/f_auto/reel.mp4`;
+const heroPosterDesktop =
+  "https://res.cloudinary.com/l5oyozuw/video/upload/so_0.2,c_fill,g_center,w_1080,ar_16:9/q_auto/f_auto/reel.jpg";
+const heroPosterMobile =
+  "https://res.cloudinary.com/l5oyozuw/video/upload/so_0.2,c_fill,g_center,w_900,ar_9:16/q_auto/f_auto/reel.jpg";
+---
+
+<BaseLayout
+  title="Peterson Excavating & Landscaping | Site Work in Northeastern Minnesota"
+  description="Peterson Excavating & Landscaping provides complete residential excavation and site preparation across northeastern Minnesota, from clearing through finish preparation."
+>
+  <a
+    class:list={[
+      "fixed top-3 left-3 z-100 -translate-y-[200%] rounded-lg bg-burgundy px-4 py-[0.7rem] text-white focus:translate-y-0",
+      focusRing,
+    ]}
+    href="#main-content"
+  >
+    Skip to main content
+  </a>
+
+  <main id="main-content">
+    <section
+      class="hero group/hero relative grid min-h-[min(58rem,100svh)] items-end overflow-hidden bg-charcoal text-white max-[48rem]:min-h-[48rem]"
+      aria-labelledby="hero-title"
+      data-motion-hero
+    >
+      <SiteHeader />
+      <picture class="absolute inset-0 h-full w-full" data-hero-motion-media>
+        <source media="(max-width: 48rem)" srcset={heroPosterMobile} />
+        <img
+          class="hero-media h-full w-full object-cover"
+          src={heroPosterDesktop}
+          alt=""
+          aria-hidden="true"
+          fetchpriority="high"
+        />
+      </picture>
+      <video
+        id="hero-video"
+        class="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-[420ms] ease-site data-[active]:opacity-100 motion-reduce:hidden"
+        muted
+        playsinline
+        loop
+        autoplay
+        preload="auto"
+        aria-hidden="true"
+        data-hero-video
+      >
+        <source
+          src={heroVideoMobile}
+          data-src={heroVideoMobile}
+          media="(max-width: 48rem) and (prefers-reduced-motion: no-preference)"
+        />
+        <source
+          src={heroVideoDesktop}
+          data-src={heroVideoDesktop}
+          media="(min-width: 48.01rem) and (prefers-reduced-motion: no-preference)"
+        />
+      </video>
+      <div
+        class="absolute inset-0 bg-[rgba(9,9,9,0.48)] max-[48rem]:bg-[rgba(9,9,9,0.58)]"
+        aria-hidden="true"
+      ></div>
+
+      <div class="relative z-[2] mb-[clamp(7rem,13vh,10rem)] ml-gutter w-[min(50rem,calc(100%-2*var(--spacing-gutter)))] max-[48rem]:mx-gutter max-[48rem]:mb-28 max-[48rem]:w-auto">
+        <h1
+          class:list={[
+            displayHeading,
+            "mb-6 text-[clamp(3.75rem,7.6vw,6rem)] text-white [@media(min-width:48.01rem)_and_(max-height:50rem)]:text-[clamp(3.5rem,6vw,5rem)] max-[48rem]:text-[clamp(3.25rem,14.5vw,4.5rem)]",
+          ]}
+          id="hero-title"
+        >
+          <span
+            class="-mt-[0.08em] -mb-[0.24em] block pt-[0.08em] pb-[0.24em] whitespace-nowrap"
+            data-hero-line
+          >
+            Local Experience.
+          </span>
+          <span
+            class="-mt-[0.08em] -mb-[0.24em] block pt-[0.08em] pb-[0.24em] whitespace-nowrap text-mist"
+            data-hero-line
+          >
+            Lasting Results.
+          </span>
+        </h1>
+        <p
+          class="mb-8 max-w-[35rem] text-[clamp(1.15rem,2vw,1.45rem)] leading-[1.35] text-white/90"
+          data-hero-copy
+        >
+          Complete residential site work across northeastern Minnesota—from
+          clearing and excavation through utilities, access, and finish
+          preparation.
+        </p>
+        <div class="flex flex-wrap gap-3" data-hero-actions>
+          <a
+            class:list={[
+              buttonBase,
+              "bg-burgundy/95 text-white transition-colors duration-[220ms] ease-site hover:bg-burgundy",
+              focusRing,
+            ]}
+            href="#contact"
+          >
+            Request an estimate
+            <ArrowDown
+              class={iconStroke}
+              stroke-width={1.8}
+              aria-hidden="true"
+            />
+          </a>
+          <a
+            class:list={[
+              buttonBase,
+              "border-white/75 bg-[rgba(15,15,15,0.42)] text-white transition-colors duration-[220ms] ease-site hover:bg-[rgba(15,15,15,0.68)]",
+              focusRing,
+            ]}
+            href={`tel:${phoneHref}`}
+          >
+            <Phone class={iconStroke} stroke-width={1.8} aria-hidden="true" />
+            Call {phoneDisplay}
+          </a>
+        </div>
+      </div>
+
+      <a
+        class:list={[
+          "absolute right-gutter bottom-8 z-[2] flex items-center gap-3 text-[0.85rem] tracking-[0.08em] text-white/80 uppercase max-[48rem]:right-auto max-[48rem]:left-gutter",
+          focusRing,
+        ]}
+        href="#services"
+        data-hero-explore
+      >
+        Explore our services <ArrowDown class="w-4" aria-hidden="true" />
+      </a>
+    </section>
+
+    <section
+      class="scroll-mt-24 bg-mist px-gutter py-section text-ink"
+      id="services"
+      aria-labelledby="services-title"
+    >
+      <div class="mb-[clamp(3rem,7vw,6.5rem)] grid grid-cols-[minmax(0,1.2fr)_minmax(18rem,0.8fr)] items-end gap-[clamp(2rem,8vw,9rem)] max-[62rem]:grid-cols-1 max-[48rem]:gap-6">
+        <div>
+          <SectionLabel>Services</SectionLabel>
+          <h2 class={sectionHeading} id="services-title">
+            Residential site work,
+            <br />
+            start to finish.
+          </h2>
+        </div>
+        <p class="text-[clamp(1.05rem,1.4vw,1.24rem)] text-muted">
+          One coordinated excavation partner keeps the ground work moving—from
+          the first clearing pass to a site prepared for what comes next.
+        </p>
+      </div>
+
+      <div
+        class="grid min-h-[42rem] grid-cols-[minmax(20rem,0.8fr)_minmax(0,1.2fr)] overflow-hidden rounded-2xl border border-line bg-white max-[62rem]:grid-cols-1 max-[48rem]:min-h-0"
+        data-service-workbench
+      >
+        <ul
+          class="m-0 list-none border-r border-line p-0 max-[62rem]:border-r-0"
+          aria-label="Residential excavation services"
+        >
+          {services.map((service, index) => (
+            <li class="border-b border-line last:border-b-0">
+              <button
+                class:list={[
+                  "service-row group grid w-full grid-cols-[1fr_auto] items-start gap-4 border-0 bg-transparent px-6 py-[1.35rem] text-left text-ink aria-pressed:bg-burgundy/95 aria-pressed:text-white max-[48rem]:px-5 max-[48rem]:py-[1.15rem]",
+                  focusRing,
+                ]}
+                type="button"
+                data-service-trigger
+                data-title={service.data.title}
+                data-summary={service.data.summary}
+                data-image={service.data.image}
+                data-image-alt={service.data.imageAlt}
+                aria-pressed={index === 0 ? "true" : "false"}
+                aria-expanded={index === 0 ? "true" : "false"}
+                aria-controls={`service-summary-${index}`}
+              >
+                <span>
+                  <strong class="block font-display text-[clamp(1.6rem,2.3vw,2.2rem)] leading-none">
+                    {service.data.title}
+                  </strong>
+                  <small
+                    class="mt-[0.45rem] block max-w-[34rem] text-[0.94rem] leading-[1.4] text-muted group-aria-pressed:text-white/78 max-[48rem]:mt-0 max-[48rem]:max-h-0 max-[48rem]:overflow-hidden max-[48rem]:opacity-0 max-[48rem]:transition-[max-height,margin,opacity] max-[48rem]:duration-[220ms] max-[48rem]:ease-site max-[48rem]:group-aria-expanded:mt-3 max-[48rem]:group-aria-expanded:max-h-28 max-[48rem]:group-aria-expanded:opacity-100"
+                    id={`service-summary-${index}`}
+                  >
+                    {service.data.summary}
+                  </small>
+                  <img
+                    class="mt-4 hidden aspect-[16/10] w-full rounded-xl object-cover max-[48rem]:group-aria-expanded:block"
+                    src={service.data.image}
+                    alt={service.data.imageAlt}
+                    width="768"
+                    height="1024"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </span>
+                <ArrowRight
+                  class="w-[1.2rem] transition-transform duration-[220ms] ease-site group-hover:translate-x-[0.35rem] group-aria-pressed:translate-x-[0.35rem] max-[48rem]:hidden"
+                  stroke-width={1.5}
+                  aria-hidden="true"
+                />
+                <ChevronDown
+                  class="hidden w-[1.3rem] shrink-0 transition-transform duration-[220ms] ease-site max-[48rem]:block max-[48rem]:group-aria-expanded:rotate-180"
+                  stroke-width={1.8}
+                  aria-hidden="true"
+                />
+              </button>
+            </li>
+          ))}
+        </ul>
+
+        <div
+          class="relative grid min-h-full content-end overflow-hidden bg-charcoal p-[clamp(2rem,5vw,5rem)] text-white max-[62rem]:min-h-[34rem] max-[48rem]:hidden"
+          aria-live="polite"
+        >
+          <img
+            class="absolute inset-0 h-full w-full object-cover"
+            src={services[0].data.image}
+            alt={services[0].data.imageAlt}
+            width="768"
+            height="1024"
+            loading="lazy"
+            decoding="async"
+            data-service-image
+          />
+          <div
+            class="absolute inset-0 bg-linear-to-t from-black/92 via-black/36 to-black/8"
+            aria-hidden="true"
+          ></div>
+          <div class="relative z-[1]">
+            <span class="text-[0.85rem] tracking-[0.12em] text-warm-sand uppercase">
+              Selected capability
+            </span>
+            <h3
+              class:list={[
+                displayHeading,
+                "my-4 max-w-[12ch] text-[clamp(3rem,6vw,6rem)]",
+              ]}
+              data-service-title
+            >
+              {services[0].data.title}
+            </h3>
+            <p
+              class="mb-0 max-w-[36rem] text-[1.1rem] text-white/72"
+              data-service-summary
+            >
+              {services[0].data.summary}
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="scroll-mt-24 grid grid-cols-[minmax(0,1.05fr)_minmax(20rem,0.95fr)] gap-[clamp(3rem,9vw,10rem)] bg-earth-charcoal px-gutter py-section text-white max-[62rem]:grid-cols-1"
+      id="why-peterson"
+      aria-labelledby="why-peterson-title"
+    >
+      <div>
+        <SectionLabel tone="dark">Why Peterson</SectionLabel>
+        <h2
+          class:list={[sectionHeading, "mb-8 max-w-[12ch]"]}
+          id="why-peterson-title"
+        >
+          Built on local knowledge and accountable work.
+        </h2>
+        <p class="text-[clamp(1.05rem,1.4vw,1.24rem)] text-white/68">
+          Peterson Excavating & Landscaping’s full company story is being
+          prepared around northeastern Minnesota roots and a family background
+          in trucking and excavation.
+        </p>
+        <p class="mt-4 text-[clamp(1.05rem,1.4vw,1.24rem)] text-white/68">
+          Verified credentials and equipment details will appear here as they
+          are approved.
+        </p>
+      </div>
+
+      <dl class="m-0 overflow-hidden rounded-2xl border border-white/20">
+        <div class="grid grid-cols-[10rem_1fr] gap-8 border-b border-white/20 px-6 py-6 max-[48rem]:grid-cols-1 max-[48rem]:gap-[0.35rem]">
+          <dt class="font-semibold">Company history</dt>
+          <dd class="m-0 text-white/64">Full story coming soon</dd>
+        </div>
+        <div class="grid grid-cols-[10rem_1fr] gap-8 border-b border-white/20 px-6 py-6 max-[48rem]:grid-cols-1 max-[48rem]:gap-[0.35rem]">
+          <dt class="font-semibold">Equipment + capabilities</dt>
+          <dd class="m-0 text-white/64">Capability details coming soon</dd>
+        </div>
+        <div class="grid grid-cols-[10rem_1fr] gap-8 px-6 py-6 max-[48rem]:grid-cols-1 max-[48rem]:gap-[0.35rem]">
+          <dt class="font-semibold">Credentials</dt>
+          <dd class="m-0 text-white/64">Verified details coming soon</dd>
+        </div>
+      </dl>
+    </section>
+
+    <section
+      class="scroll-mt-24 bg-stone px-gutter py-section text-ink"
+      id="testimonials"
+      aria-labelledby="testimonials-title"
+    >
+      <div class="grid grid-cols-[minmax(0,0.78fr)_minmax(24rem,1.22fr)] items-start gap-[clamp(3rem,9vw,10rem)] max-[62rem]:grid-cols-1">
+        <div>
+          <SectionLabel>Testimonials</SectionLabel>
+          <h2
+            class:list={[sectionHeading, "mb-8 max-w-[10ch]"]}
+            id="testimonials-title"
+          >
+            Customer feedback, in their own words.
+          </h2>
+          <p class="text-[clamp(1.05rem,1.4vw,1.24rem)] text-muted">
+            This section is reserved for verified feedback from Peterson
+            Excavating & Landscaping customers. Reviews will be published only
+            after the wording and attribution are approved.
+          </p>
+        </div>
+
+        {approvedTestimonials.length > 0 ? (
+          <div class="grid gap-4" aria-label="Customer testimonials">
+            {approvedTestimonials.map((testimonial) => (
+              <blockquote class="m-0 rounded-2xl border border-line bg-white p-[clamp(1.75rem,4vw,3.5rem)]">
+                <Quote
+                  class="mb-8 w-9 text-burgundy"
+                  stroke-width={1.5}
+                  aria-hidden="true"
+                />
+                <p class="m-0 max-w-[28ch] font-display text-[clamp(2rem,3.5vw,3.25rem)] font-bold leading-[1.02] tracking-[-0.03em] text-ink">
+                  “{testimonial.quote}”
+                </p>
+                <footer class="mt-8 border-t border-line pt-5 text-sm text-muted">
+                  <strong class="block text-base text-ink">
+                    {testimonial.customer}
+                  </strong>
+                  {testimonial.project}
+                </footer>
+              </blockquote>
+            ))}
+          </div>
+        ) : (
+          <div class="rounded-2xl border border-line bg-white p-[clamp(1.75rem,4vw,3.5rem)]">
+            <Quote
+              class="mb-[clamp(4rem,10vw,8rem)] w-10 text-burgundy"
+              stroke-width={1.5}
+              aria-hidden="true"
+            />
+            <p class="m-0 max-w-[18ch] font-display text-[clamp(2.5rem,5vw,4.75rem)] font-bold leading-[0.96] tracking-[-0.035em] text-ink">
+              Verified customer stories are coming soon.
+            </p>
+            <div class="mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-line pt-5 text-sm text-muted">
+              <span>Review selection in progress</span>
+              <span class="rounded-lg border border-line px-3 py-2 font-semibold text-ink">
+                Verified feedback only
+              </span>
+            </div>
+          </div>
+        )}
+      </div>
+    </section>
+
+    <section
+      class="scroll-mt-24 grid grid-cols-[minmax(0,0.9fr)_minmax(22rem,1.1fr)] gap-[clamp(3rem,9vw,10rem)] bg-charcoal px-gutter py-section text-white max-[62rem]:grid-cols-1"
+      id="materials"
+      aria-labelledby="materials-title"
+    >
+      <div>
+        <SectionLabel tone="dark">Materials</SectionLabel>
+        <h2
+          class:list={[sectionHeading, "mb-8 max-w-[10ch]"]}
+          id="materials-title"
+        >
+          Materials for pickup or delivery.
+        </h2>
+        <p class="max-w-[38rem] text-[clamp(1.05rem,1.4vw,1.24rem)] text-white/68">
+          Tell us what material and quantity you need. We’ll confirm
+          availability, sizing, delivery access, and pricing before anything is
+          scheduled.
+        </p>
+        <a
+          class:list={[
+            "mt-8 inline-flex items-center gap-3 border-t border-white/20 pt-4 font-semibold text-white underline-offset-4 hover:underline focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-[#d9f0f2]",
+          ]}
+          href="#contact"
+          data-select-request-form="materials"
+        >
+          Request a materials quote
+          <ArrowDown class="w-5" stroke-width={1.8} aria-hidden="true" />
+        </a>
+      </div>
+      <ul class="m-0 list-none overflow-hidden rounded-2xl border border-white/20 bg-burgundy/95 p-0">
+        {materials.map((material) => (
+          <li class="group flex items-center justify-between gap-6 border-b border-white/15 px-5 py-[1.15rem] font-display text-[clamp(1.75rem,2.6vw,2.4rem)] font-bold leading-none text-white transition-[padding] duration-[220ms] ease-site last:border-b-0 hover:pr-7">
+            {material.data.name}
+            <small class="font-body text-[0.72rem] font-semibold tracking-[0.08em] text-warm-sand uppercase">
+              Availability varies
+            </small>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section
+      class="scroll-mt-24 grid grid-cols-[minmax(0,0.9fr)_minmax(22rem,1.1fr)] gap-[clamp(3rem,9vw,10rem)] bg-mist px-gutter py-section text-ink max-[62rem]:grid-cols-1"
+      id="service-area"
+      aria-labelledby="service-area-title"
+    >
+      <div>
+        <SectionLabel>Service Area</SectionLabel>
+        <h2
+          class:list={[sectionHeading, "mb-8 max-w-[11ch]"]}
+          id="service-area-title"
+        >
+          Working across northeastern Minnesota.
+        </h2>
+        <p class="max-w-[40rem] text-[clamp(1.05rem,1.4vw,1.24rem)] text-muted">
+          Project location, travel distance, site access, and scheduling all
+          affect availability. Share where the work is and we’ll confirm whether
+          it fits our current service area. The locations shown are approximate
+          working limits, not rigid boundaries.
+        </p>
+        <a
+          class="mt-8 inline-flex items-center gap-3 border-t border-line pt-4 font-semibold text-burgundy underline-offset-4 hover:underline focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-burgundy"
+          href="#contact"
+          data-select-request-form="project"
+        >
+          Check your project location
+          <ArrowDown class="w-5" stroke-width={1.8} aria-hidden="true" />
+        </a>
+      </div>
+
+      <div class="flex min-h-[28rem] items-center self-stretch max-[62rem]:min-h-[16rem]">
+        <div
+          class="grid w-full grid-cols-3 border-y border-burgundy py-[clamp(2.5rem,6vw,5rem)]"
+          role="list"
+          aria-label="Approximate service-area limits"
+          data-service-area-locations
+        >
+          <div
+            class="flex min-w-0 items-center justify-center px-3 text-center font-display text-[clamp(1.75rem,3.2vw,3.8rem)] font-bold leading-[0.9] tracking-[-0.025em] text-burgundy max-[32rem]:px-1 max-[32rem]:text-[clamp(1.35rem,6.4vw,1.75rem)]"
+            role="listitem"
+          >
+            Two Harbors
+          </div>
+          <div
+            class="flex min-w-0 items-center justify-center px-3 text-center font-display text-[clamp(1.75rem,3.2vw,3.8rem)] font-bold leading-[0.9] tracking-[-0.025em] text-burgundy max-[32rem]:px-1 max-[32rem]:text-[clamp(1.35rem,6.4vw,1.75rem)]"
+            role="listitem"
+          >
+            Cloquet
+          </div>
+          <div
+            class="flex min-w-0 items-center justify-center px-3 text-center font-display text-[clamp(1.75rem,3.2vw,3.8rem)] font-bold leading-[0.9] tracking-[-0.025em] text-burgundy max-[32rem]:px-1 max-[32rem]:text-[clamp(1.35rem,6.4vw,1.75rem)]"
+            role="listitem"
+          >
+            Cotton
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="scroll-mt-24 bg-charcoal px-gutter py-section text-white"
+      id="contact"
+      aria-labelledby="contact-title"
+    >
+      <div class="mb-[clamp(3rem,6vw,5rem)] grid grid-cols-[minmax(0,1fr)_minmax(22rem,0.72fr)] items-end gap-[clamp(3rem,8vw,9rem)] max-[62rem]:grid-cols-1">
+        <div>
+          <SectionLabel tone="dark">Contact</SectionLabel>
+          <h2
+            class:list={[sectionHeading, "mb-8 max-w-[12ch]"]}
+            id="contact-title"
+          >
+            Tell us what you need.
+          </h2>
+          <p class="max-w-[44rem] text-[clamp(1.05rem,1.4vw,1.24rem)] text-white/68">
+            Request an estimate for site work in northeastern Minnesota, ask
+            about materials, or send us a general question. You can also call or
+            text us directly.
+          </p>
+        </div>
+        <div class="flex flex-wrap items-stretch gap-3" id="contact-status">
+          <span class="w-full text-[0.84rem] text-warm-sand">
+            Prefer to talk it through first?
+          </span>
+          <a
+            class:list={[
+              "inline-flex min-h-15 items-center justify-center gap-[0.8rem] rounded-xl bg-burgundy px-[1.35rem] py-[0.95rem] font-semibold text-white transition-colors duration-[220ms] ease-site hover:bg-burgundy/95 max-[48rem]:w-full",
+              focusRing,
+            ]}
+            href={`tel:${phoneHref}`}
+          >
+            <Phone class={iconStroke} stroke-width={1.8} aria-hidden="true" />
+            Call {phoneDisplay}
+          </a>
+          <a
+            class:list={[
+              "inline-flex min-h-15 items-center justify-center gap-[0.8rem] rounded-xl border border-white/60 bg-transparent px-[1.35rem] py-[0.95rem] font-semibold text-white transition-colors duration-[220ms] ease-site hover:bg-white/10 max-[48rem]:w-full",
+              focusRing,
+            ]}
+            href={`sms:${phoneHref}`}
+          >
+            <MessageSquare
+              class={iconStroke}
+              stroke-width={1.8}
+              aria-hidden="true"
+            />
+            Text {phoneDisplay}
+          </a>
+        </div>
+      </div>
+
+      <RequestForms />
+    </section>
+  </main>
+
+  <SiteFooter />
+
+  <script>
+    import { runHeroEntrance } from "../scripts/site-motion";
+
+    const hero = document.querySelector<HTMLElement>(".hero");
+    const heroVideo =
+      document.querySelector<HTMLVideoElement>("[data-hero-video]");
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const mobileViewport = window.matchMedia("(max-width: 48rem)");
+    const heroVideoSources = Array.from(
+      heroVideo?.querySelectorAll<HTMLSourceElement>("source[data-src]") ?? [],
+    );
+    const connection = (
+      navigator as Navigator & { connection?: { saveData?: boolean } }
+    ).connection;
+    let activationFrame = 0;
+
+    const unloadHeroVideo = () => {
+      if (!heroVideo) return;
+      cancelAnimationFrame(activationFrame);
+      heroVideo.pause();
+      heroVideo.removeAttribute("data-active");
+      heroVideoSources.forEach((source) => source.removeAttribute("src"));
+      heroVideo.load();
+      hero?.removeAttribute("data-video-ready");
+    };
+
+    const loadHeroVideo = (forceReload = false) => {
+      if (!hero || !heroVideo) return;
+      if (reducedMotion.matches || connection?.saveData) {
+        unloadHeroVideo();
+        return;
+      }
+
+      let restoredSource = false;
+      heroVideoSources.forEach((source) => {
+        if (!source.hasAttribute("src") && source.dataset.src) {
+          source.src = source.dataset.src;
+          restoredSource = true;
+        }
+      });
+      if (restoredSource || forceReload) heroVideo.load();
+      void heroVideo.play().catch(unloadHeroVideo);
+    };
+
+    heroVideo?.addEventListener("playing", () => {
+      cancelAnimationFrame(activationFrame);
+      activationFrame = requestAnimationFrame(() => {
+        activationFrame = requestAnimationFrame(() => {
+          heroVideo.setAttribute("data-active", "");
+          hero?.setAttribute("data-video-ready", "");
+        });
+      });
+    });
+    heroVideo?.addEventListener("error", unloadHeroVideo);
+
+    reducedMotion.addEventListener("change", () => loadHeroVideo(true));
+    mobileViewport.addEventListener("change", () => loadHeroVideo(true));
+    loadHeroVideo();
+    runHeroEntrance(hero);
+
+    const workbench = document.querySelector<HTMLElement>(
+      "[data-service-workbench]",
+    );
+    const serviceTitle = workbench?.querySelector<HTMLElement>(
+      "[data-service-title]",
+    );
+    const serviceSummary = workbench?.querySelector<HTMLElement>(
+      "[data-service-summary]",
+    );
+    const serviceImage = workbench?.querySelector<HTMLImageElement>(
+      "[data-service-image]",
+    );
+
+    workbench
+      ?.querySelectorAll<HTMLButtonElement>("[data-service-trigger]")
+      .forEach((button) => {
+        button.addEventListener("click", () => {
+          workbench
+            .querySelectorAll("[data-service-trigger]")
+            .forEach((item) => {
+              item.setAttribute("aria-pressed", String(item === button));
+              item.setAttribute("aria-expanded", String(item === button));
+            });
+          if (serviceTitle)
+            serviceTitle.textContent = button.dataset.title ?? "";
+          if (serviceSummary)
+            serviceSummary.textContent = button.dataset.summary ?? "";
+          if (serviceImage) {
+            serviceImage.src = button.dataset.image ?? "";
+            serviceImage.alt = button.dataset.imageAlt ?? "";
+          }
+        });
+      });
+  </script>
+</BaseLayout>

@@ -1,0 +1,368 @@
+---
+import { getCollection } from "astro:content";
+import { ArrowRight, ChevronDown } from "@lucide/astro";
+
+const materials = (await getCollection("materials")).sort(
+  (a, b) => a.data.position - b.data.position,
+);
+const formEndpoint = import.meta.env.PUBLIC_BASIN_MATERIALS_ENDPOINT?.trim();
+const formReady = Boolean(formEndpoint);
+const phoneDisplay = "218-355-0992";
+const focusRing =
+  "focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-burgundy";
+const inputClass =
+  "min-h-14 w-full rounded-xl border border-line bg-white px-4 py-3 text-base text-ink caret-burgundy outline-none transition-colors placeholder:text-muted hover:border-muted focus:border-burgundy focus:ring-2 focus:ring-burgundy/18 aria-invalid:border-burgundy aria-invalid:bg-[#fff8fa]";
+const selectClass = `${inputClass} appearance-none pr-12`;
+const fieldLabel = "mb-2 block font-semibold text-ink";
+const fieldHint = "mt-2 block text-sm leading-[1.45] text-muted";
+const errorClass =
+  "mt-2 hidden text-sm font-medium text-burgundy data-[visible]:block";
+const sectionTitle =
+  "font-display text-[clamp(2rem,3.2vw,3rem)] font-bold leading-none tracking-[-0.03em] text-ink";
+---
+
+<form
+  class="min-w-0"
+  action={formReady ? formEndpoint : undefined}
+  method="post"
+  novalidate
+  data-validated-form
+  data-form-ready={String(formReady)}
+>
+  <input type="hidden" name="request_type" value="Materials quote" />
+  <div class="hidden" aria-hidden="true">
+    <label for="materials-company-website">Leave this field empty</label>
+    <input
+      id="materials-company-website"
+      name="_gotcha"
+      type="text"
+      tabindex="-1"
+      autocomplete="off"
+    />
+  </div>
+
+  <div
+    class="mb-8 hidden rounded-xl border border-burgundy bg-[#fff8fa] px-4 py-3 font-medium text-burgundy data-[visible]:block"
+    role="alert"
+    data-form-errors
+  >
+    Review the marked fields and add the missing information.
+  </div>
+
+  <fieldset class="m-0 border-0 p-0" data-required-group>
+    <legend class="sr-only">Pickup or delivery</legend>
+    <h3 class={sectionTitle}>How should it get to you?</h3>
+    <div class="mt-7 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-line bg-line max-[48rem]:grid-cols-1">
+      <label class="flex min-h-20 cursor-pointer items-center gap-3 bg-white px-5 py-4 font-semibold hover:bg-stone/55 has-checked:bg-burgundy has-checked:text-white">
+        <input
+          class="h-5 w-5 accent-burgundy"
+          type="radio"
+          name="fulfillment"
+          value="Pickup"
+        />
+        I’ll pick it up
+      </label>
+      <label class="flex min-h-20 cursor-pointer items-center gap-3 bg-white px-5 py-4 font-semibold hover:bg-stone/55 has-checked:bg-burgundy has-checked:text-white">
+        <input
+          class="h-5 w-5 accent-burgundy"
+          type="radio"
+          name="fulfillment"
+          value="Delivery"
+        />
+        I need delivery
+      </label>
+    </div>
+    <p class={errorClass} data-group-error>
+      Choose pickup or delivery.
+    </p>
+  </fieldset>
+
+  <fieldset
+    class="mt-14 border-0 border-t border-line p-0 pt-8"
+    data-required-group
+  >
+    <legend class="sr-only">Materials</legend>
+    <div class="mb-7 flex items-baseline justify-between gap-4 max-[48rem]:block">
+      <h3 class={sectionTitle}>What material do you need?</h3>
+      <span class="text-sm text-muted max-[48rem]:mt-2 max-[48rem]:block">
+        Select all that apply
+      </span>
+    </div>
+    <div class="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-line bg-line max-[48rem]:grid-cols-1">
+      {materials.map((material) => (
+        <label class="flex min-h-16 cursor-pointer items-center gap-3 bg-white px-4 py-3 font-semibold hover:bg-stone/55 has-checked:bg-burgundy has-checked:text-white">
+          <input
+            class="h-5 w-5 shrink-0 rounded-sm accent-burgundy"
+            type="checkbox"
+            name="material"
+            value={material.data.name}
+          />
+          <span>{material.data.name}</span>
+        </label>
+      ))}
+      <label class="flex min-h-16 cursor-pointer items-center gap-3 bg-white px-4 py-3 font-semibold hover:bg-stone/55 has-checked:bg-burgundy has-checked:text-white">
+        <input
+          class="h-5 w-5 shrink-0 rounded-sm accent-burgundy"
+          type="checkbox"
+          name="material"
+          value="Not sure"
+        />
+        <span>I’m not sure</span>
+      </label>
+    </div>
+    <p class={errorClass} data-group-error>
+      Choose at least one material or select “I’m not sure.”
+    </p>
+  </fieldset>
+
+  <section
+    class="mt-14 border-t border-line pt-8"
+    aria-labelledby="quantity-title"
+  >
+    <h3 class={sectionTitle} id="quantity-title">
+      Quantity and timing
+    </h3>
+    <div class="mt-7 grid grid-cols-2 gap-x-5 gap-y-7 max-[48rem]:grid-cols-1">
+      <div>
+        <label class={fieldLabel} for="material-quantity">
+          Estimated quantity
+        </label>
+        <input
+          class={inputClass}
+          id="material-quantity"
+          name="quantity"
+          type="text"
+          placeholder="Amount and unit, if known"
+          required
+          aria-describedby="material-quantity-hint material-quantity-error"
+          data-error-message="Enter an estimated quantity or tell us that you are unsure."
+        />
+        <span class={fieldHint} id="material-quantity-hint">
+          For example: 12 yards, one truckload, or “not sure.”
+        </span>
+        <p
+          class={errorClass}
+          id="material-quantity-error"
+          data-error-for="material-quantity"
+        ></p>
+      </div>
+      <div>
+        <label class={fieldLabel} for="material-timing">
+          Preferred timing
+        </label>
+        <div class="relative">
+          <select
+            class={selectClass}
+            id="material-timing"
+            name="timing"
+            required
+            aria-describedby="material-timing-error"
+            data-error-message="Choose the timing that best fits your request."
+          >
+            <option value="">Choose a timeframe</option>
+            <option>As soon as available</option>
+            <option>Within two weeks</option>
+            <option>Within one month</option>
+            <option>Planning ahead</option>
+            <option>Not sure yet</option>
+          </select>
+          <ChevronDown
+            class="pointer-events-none absolute top-1/2 right-4 w-5 -translate-y-1/2 text-burgundy"
+            stroke-width={2.2}
+            aria-hidden="true"
+          />
+        </div>
+        <p
+          class={errorClass}
+          id="material-timing-error"
+          data-error-for="material-timing"
+        ></p>
+      </div>
+    </div>
+  </section>
+
+  <section
+    class="mt-14 border-t border-line pt-8"
+    aria-labelledby="delivery-title"
+    data-delivery-fields
+    hidden
+  >
+    <h3 class={sectionTitle} id="delivery-title">
+      Delivery details
+    </h3>
+    <div class="mt-7 grid gap-7">
+      <div>
+        <label class={fieldLabel} for="delivery-address">
+          Delivery address
+        </label>
+        <input
+          class={inputClass}
+          id="delivery-address"
+          name="delivery_address"
+          type="text"
+          autocomplete="street-address"
+          required
+          disabled
+          aria-describedby="delivery-address-error"
+          data-error-message="Enter the delivery address."
+        />
+        <p
+          class={errorClass}
+          id="delivery-address-error"
+          data-error-for="delivery-address"
+        ></p>
+      </div>
+      <div>
+        <label class={fieldLabel} for="delivery-access">
+          Truck access and drop location
+        </label>
+        <textarea
+          class:list={[inputClass, "min-h-32 resize-y"]}
+          id="delivery-access"
+          name="delivery_access"
+          placeholder="Describe the driveway, turning room, overhead clearance, slope, and where the load should be placed."
+          required
+          disabled
+          aria-describedby="delivery-access-error"
+          data-error-message="Describe how a delivery truck can reach and place the material."
+        ></textarea>
+        <p
+          class={errorClass}
+          id="delivery-access-error"
+          data-error-for="delivery-access"
+        ></p>
+      </div>
+    </div>
+  </section>
+
+  <section
+    class="mt-14 border-t border-line pt-8"
+    aria-labelledby="materials-notes-title"
+  >
+    <h3 class={sectionTitle} id="materials-notes-title">
+      Anything else we should know?
+    </h3>
+    <div class="mt-7">
+      <label class={fieldLabel} for="material-notes">
+        Anything else we should know?{" "}
+        <span class="font-normal text-muted">(optional)</span>
+      </label>
+      <textarea
+        class:list={[inputClass, "min-h-32 resize-y"]}
+        id="material-notes"
+        name="notes"
+        placeholder="Material use, preferred size, site conditions, or questions"
+      ></textarea>
+    </div>
+  </section>
+
+  <section
+    class="mt-14 border-t border-line pt-8"
+    aria-labelledby="materials-contact-title"
+  >
+    <h3 class={sectionTitle} id="materials-contact-title">
+      How to reach you
+    </h3>
+    <div class="mt-7 grid grid-cols-2 gap-x-5 gap-y-7 max-[48rem]:grid-cols-1">
+      <div>
+        <label class={fieldLabel} for="materials-name">
+          Name
+        </label>
+        <input
+          class={inputClass}
+          id="materials-name"
+          name="name"
+          type="text"
+          autocomplete="name"
+          required
+          aria-describedby="materials-name-error"
+          data-error-message="Enter your name."
+        />
+        <p
+          class={errorClass}
+          id="materials-name-error"
+          data-error-for="materials-name"
+        ></p>
+      </div>
+      <div>
+        <label class={fieldLabel} for="materials-phone">
+          Phone
+        </label>
+        <input
+          class={inputClass}
+          id="materials-phone"
+          name="phone"
+          type="tel"
+          autocomplete="tel"
+          inputmode="tel"
+          required
+          aria-describedby="materials-phone-error"
+          data-error-message="Enter a phone number where we can reach you."
+        />
+        <p
+          class={errorClass}
+          id="materials-phone-error"
+          data-error-for="materials-phone"
+        ></p>
+      </div>
+      <div class="col-span-2 max-[48rem]:col-span-1">
+        <label class={fieldLabel} for="materials-email">
+          Email <span class="font-normal text-muted">(optional)</span>
+        </label>
+        <input
+          class={inputClass}
+          id="materials-email"
+          name="email"
+          type="email"
+          autocomplete="email"
+          aria-describedby="materials-email-error"
+          data-error-message="Enter a complete email address."
+        />
+        <p
+          class={errorClass}
+          id="materials-email-error"
+          data-error-for="materials-email"
+        ></p>
+      </div>
+    </div>
+  </section>
+
+  <div class="mt-12 border-t border-line pt-8">
+    <p class="mb-5 max-w-[46rem] text-sm text-muted">
+      This quote request is nonbinding. Peterson Excavating & Landscaping must
+      confirm material availability, delivery access, delivery conditions, and
+      final pricing before accepting an order.
+    </p>
+    {formReady ? (
+      <button
+        class:list={[
+          "inline-flex min-h-15 items-center justify-center gap-3 rounded-xl bg-burgundy px-6 py-4 font-semibold text-white transition-colors hover:bg-burgundy/95 disabled:cursor-wait disabled:opacity-65 max-[48rem]:w-full",
+          focusRing,
+        ]}
+        type="submit"
+        data-pending-label="Sending materials quote request…"
+      >
+        Request a materials quote
+        <ArrowRight class="w-5" stroke-width={1.8} aria-hidden="true" />
+      </button>
+    ) : (
+      <div class="rounded-2xl border border-line bg-stone/55 p-5">
+        <p class="m-0 font-semibold text-ink">
+          Online submission is being connected.
+        </p>
+        <p class="mt-2 mb-0 text-muted">
+          The form is ready for review. Until the secure submission service is
+          configured, please call or text {phoneDisplay}.
+        </p>
+        <button
+          class="mt-5 inline-flex min-h-14 cursor-not-allowed items-center gap-3 rounded-xl bg-charcoal px-5 text-white/55"
+          type="submit"
+          disabled
+        >
+          Request a materials quote
+          <ArrowRight class="w-5" stroke-width={1.8} aria-hidden="true" />
+        </button>
+      </div>
+    )}
+  </div>
+</form>

@@ -1,0 +1,85 @@
+---
+import { ArrowUp, Phone } from "@lucide/astro";
+import BrandLogo from "./BrandLogo.astro";
+
+const focusRing =
+  "focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-[#d9f0f2]";
+const footerLink = `text-white underline-offset-4 hover:underline ${focusRing}`;
+const onHomepage = Astro.url.pathname === "/";
+const sectionHref = (section: string) =>
+  onHomepage ? `#${section}` : `/#${section}`;
+const phoneDisplay = "218-355-0992";
+const phoneHref = "+12183550992";
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-charcoal px-gutter pt-16 pb-10 text-[0.9rem] text-white/66">
+  <div class="grid grid-cols-[minmax(14rem,1fr)_auto_minmax(16rem,0.8fr)] gap-[clamp(3rem,8vw,8rem)] max-[62rem]:grid-cols-1">
+    <div>
+      <BrandLogo class="h-auto w-full max-w-[14.5rem]" sizes="232px" />
+      <p class="mt-6 mb-0 max-w-[34rem] text-base text-white/72">
+        Complete residential site work across northeastern Minnesota—from
+        clearing and excavation through utilities, access, and finish
+        preparation.
+      </p>
+    </div>
+
+    <nav class="grid content-start gap-4" aria-label="Footer navigation">
+      <strong class="text-xs tracking-[0.16em] text-warm-sand uppercase">
+        Explore
+      </strong>
+      <a class={footerLink} href={sectionHref("services")}>
+        Services
+      </a>
+      <a class={footerLink} href={sectionHref("why-peterson")}>
+        Why Peterson
+      </a>
+      <a class={footerLink} href={sectionHref("testimonials")}>
+        Testimonials
+      </a>
+      <a class={footerLink} href={sectionHref("materials")}>
+        Materials
+      </a>
+      <a class={footerLink} href={sectionHref("service-area")}>
+        Service Area
+      </a>
+      <a class={footerLink} href={sectionHref("contact")}>
+        Contact
+      </a>
+    </nav>
+
+    <div class="grid content-start justify-items-start gap-4 max-[62rem]:max-w-[32rem] min-[62.01rem]:justify-self-end">
+      <strong class="block text-xs tracking-[0.16em] text-warm-sand uppercase">
+        Serving
+      </strong>
+      <p class="m-0 text-base text-white">Northeastern Minnesota</p>
+      <a
+        class:list={[
+          "mt-4 inline-flex items-center gap-2 text-base font-semibold",
+          footerLink,
+        ]}
+        href={`tel:${phoneHref}`}
+      >
+        <Phone class="w-4" stroke-width={1.8} aria-hidden="true" />
+        {phoneDisplay}
+      </a>
+      <a
+        class:list={[
+          "mt-8 inline-flex items-center gap-2 font-semibold",
+          footerLink,
+        ]}
+        href="#main-content"
+      >
+        Back to top
+        <ArrowUp class="w-4" aria-hidden="true" />
+      </a>
+    </div>
+  </div>
+
+  <div class="mt-12 border-t border-white/15 pt-6 text-[0.78rem]">
+    <small>
+      © {currentYear} Peterson Excavating & Landscaping, LLC. All rights
+      reserved.
+    </small>
+  </div>
+</footer>

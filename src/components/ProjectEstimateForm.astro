@@ -1,0 +1,453 @@
+---
+import { getCollection } from "astro:content";
+import { ArrowRight, ChevronDown, FileUp } from "@lucide/astro";
+
+const services = (await getCollection("services")).sort(
+  (a, b) => a.data.position - b.data.position,
+);
+const formEndpoint = import.meta.env.PUBLIC_BASIN_ESTIMATE_ENDPOINT?.trim();
+const formReady = Boolean(formEndpoint);
+const phoneDisplay = "218-355-0992";
+const focusRing =
+  "focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-burgundy";
+const inputClass =
+  "min-h-14 w-full rounded-xl border border-line bg-white px-4 py-3 text-base text-ink caret-burgundy outline-none transition-colors placeholder:text-muted hover:border-muted focus:border-burgundy focus:ring-2 focus:ring-burgundy/18 aria-invalid:border-burgundy aria-invalid:bg-[#fff8fa]";
+const selectClass = `${inputClass} appearance-none pr-12`;
+const fieldLabel = "mb-2 block font-semibold text-ink";
+const fieldHint = "mt-2 block text-sm leading-[1.45] text-muted";
+const errorClass =
+  "mt-2 hidden text-sm font-medium text-burgundy data-[visible]:block";
+const sectionTitle =
+  "font-display text-[clamp(2rem,3.2vw,3rem)] font-bold leading-none tracking-[-0.03em] text-ink";
+---
+
+<form
+  class="min-w-0"
+  action={formReady ? formEndpoint : undefined}
+  method="post"
+  enctype="multipart/form-data"
+  novalidate
+  data-validated-form
+  data-form-ready={String(formReady)}
+>
+  <input type="hidden" name="request_type" value="Excavation estimate" />
+  <div class="hidden" aria-hidden="true">
+    <label for="estimate-company-website">Leave this field empty</label>
+    <input
+      id="estimate-company-website"
+      name="_gotcha"
+      type="text"
+      tabindex="-1"
+      autocomplete="off"
+    />
+  </div>
+
+  <div
+    class="mb-8 hidden rounded-xl border border-burgundy bg-[#fff8fa] px-4 py-3 font-medium text-burgundy data-[visible]:block"
+    role="alert"
+    data-form-errors
+  >
+    Review the marked fields and add the missing information.
+  </div>
+
+  <fieldset class="m-0 border-0 p-0" data-required-group>
+    <legend class="sr-only">Project type</legend>
+    <div class="mb-7 flex items-baseline justify-between gap-4 max-[48rem]:block">
+      <h3 class={sectionTitle}>Your project</h3>
+      <span class="text-sm text-muted max-[48rem]:mt-2 max-[48rem]:block">
+        Select all that apply
+      </span>
+    </div>
+    <div class="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-line bg-line max-[48rem]:grid-cols-1">
+      {services.map((service) => (
+        <label class="flex min-h-16 cursor-pointer items-center gap-3 bg-white px-4 py-3 font-semibold hover:bg-stone/55 has-checked:bg-burgundy has-checked:text-white">
+          <input
+            class="h-5 w-5 shrink-0 rounded-sm accent-burgundy"
+            type="checkbox"
+            name="project_type"
+            value={service.data.title}
+          />
+          <span>{service.data.title}</span>
+        </label>
+      ))}
+      <label class="flex min-h-16 cursor-pointer items-center gap-3 bg-white px-4 py-3 font-semibold hover:bg-stone/55 has-checked:bg-burgundy has-checked:text-white">
+        <input
+          class="h-5 w-5 shrink-0 rounded-sm accent-burgundy"
+          id="project-type-other"
+          type="checkbox"
+          name="project_type"
+          value="Other"
+          data-other-project-toggle
+        />
+        <span>Other excavation or site-work need</span>
+      </label>
+    </div>
+    <p class={errorClass} data-group-error>
+      Choose at least one type of work.
+    </p>
+    <div class="mt-5" data-other-project-field hidden>
+      <label class={fieldLabel} for="project-type-other-details">
+        Tell us what kind of work you need
+      </label>
+      <input
+        class={inputClass}
+        id="project-type-other-details"
+        name="other_project_type"
+        type="text"
+        placeholder="Describe the work that does not fit the categories above"
+        required
+        disabled
+        aria-describedby="project-type-other-details-error"
+        data-error-message="Describe the other excavation or site-work need."
+      />
+      <p
+        class={errorClass}
+        id="project-type-other-details-error"
+        data-error-for="project-type-other-details"
+      ></p>
+    </div>
+  </fieldset>
+
+  <div class="mt-9 grid grid-cols-2 gap-x-5 gap-y-7 max-[48rem]:grid-cols-1">
+    <div class="col-span-2 max-[48rem]:col-span-1">
+      <label class={fieldLabel} for="project-location">
+        Project address or nearest community
+      </label>
+      <input
+        class={inputClass}
+        id="project-location"
+        name="project_location"
+        type="text"
+        autocomplete="street-address"
+        placeholder="Street address, city, or nearby community"
+        required
+        aria-describedby="project-location-error"
+        data-error-message="Enter the project location or nearest community."
+      />
+      <p
+        class={errorClass}
+        id="project-location-error"
+        data-error-for="project-location"
+      ></p>
+    </div>
+
+    <div>
+      <label class={fieldLabel} for="project-timing">
+        When do you need the work?
+      </label>
+      <div class="relative">
+        <select
+          class={selectClass}
+          id="project-timing"
+          name="project_timing"
+          required
+          aria-describedby="project-timing-error"
+          data-error-message="Choose the timing that best fits the project."
+        >
+          <option value="">Choose a timeframe</option>
+          <option>As soon as possible</option>
+          <option>Within 1–3 months</option>
+          <option>Later this year</option>
+          <option>Planning ahead</option>
+          <option>Not sure yet</option>
+        </select>
+        <ChevronDown
+          class="pointer-events-none absolute top-1/2 right-4 w-5 -translate-y-1/2 text-burgundy"
+          stroke-width={2.2}
+          aria-hidden="true"
+        />
+      </div>
+      <p
+        class={errorClass}
+        id="project-timing-error"
+        data-error-for="project-timing"
+      ></p>
+    </div>
+
+    <div>
+      <label class={fieldLabel} for="site-stage">
+        Where is the project now?
+      </label>
+      <div class="relative">
+        <select class={selectClass} id="site-stage" name="site_stage">
+          <option value="">Choose if known</option>
+          <option>Planning or design</option>
+          <option>Permits in progress</option>
+          <option>Ready for site work</option>
+          <option>Existing property or repair</option>
+        </select>
+        <ChevronDown
+          class="pointer-events-none absolute top-1/2 right-4 w-5 -translate-y-1/2 text-burgundy"
+          stroke-width={2.2}
+          aria-hidden="true"
+        />
+      </div>
+    </div>
+
+    <div class="col-span-2 max-[48rem]:col-span-1">
+      <label class={fieldLabel} for="project-details">
+        Describe the work
+      </label>
+      <textarea
+        class:list={[inputClass, "min-h-44 resize-y"]}
+        id="project-details"
+        name="project_details"
+        placeholder="What are you building, replacing, repairing, or preparing? Include dimensions or known conditions when helpful."
+        required
+        aria-describedby="project-details-hint project-details-error"
+        data-error-message="Add a short description of the project."
+      ></textarea>
+      <span class={fieldHint} id="project-details-hint">
+        A few clear sentences are enough to get started.
+      </span>
+      <p
+        class={errorClass}
+        id="project-details-error"
+        data-error-for="project-details"
+      ></p>
+    </div>
+
+    <div class="col-span-2 max-[48rem]:col-span-1">
+      <label class={fieldLabel} for="site-access">
+        Site access or known conditions{" "}
+        <span class="font-normal text-muted">(optional)</span>
+      </label>
+      <textarea
+        class:list={[inputClass, "min-h-28 resize-y"]}
+        id="site-access"
+        name="site_access"
+        placeholder="Steep access, narrow drive, wet ground, occupied home, or other useful context"
+      ></textarea>
+    </div>
+  </div>
+
+  <section
+    class="mt-14 border-t border-line pt-8"
+    aria-labelledby="files-title"
+  >
+    <h3 class={sectionTitle} id="files-title">
+      Helpful files
+    </h3>
+    <p class="mt-3 max-w-[44rem] text-muted">
+      Photos, plans, septic designs, and other relevant documents are optional,
+      but they can make the first conversation more useful.
+    </p>
+    <input
+      class="peer sr-only"
+      id="project-files"
+      name="attachments"
+      type="file"
+      accept=".pdf,.jpg,.jpeg,.png,.heic,application/pdf,image/jpeg,image/png,image/heic"
+      multiple
+      data-file-input
+    />
+    <label
+      class:list={[
+        "mt-6 flex min-h-24 cursor-pointer items-center gap-4 rounded-xl border border-dashed border-muted bg-white px-5 py-4 font-semibold text-ink transition-colors hover:border-burgundy hover:bg-[#fff8fa] peer-focus-visible:outline-3 peer-focus-visible:outline-offset-4 peer-focus-visible:outline-burgundy",
+      ]}
+      for="project-files"
+    >
+      <FileUp class="w-6 text-burgundy" stroke-width={1.7} aria-hidden="true" />
+      <span>
+        Add photos or documents
+        <small class="mt-1 block font-normal text-muted">
+          PDF, JPG, PNG, or HEIC
+        </small>
+      </span>
+    </label>
+    <p
+      class="mt-3 text-sm text-muted"
+      aria-live="polite"
+      data-file-list="project-files"
+    >
+      No files selected
+    </p>
+  </section>
+
+  <section
+    class="mt-14 border-t border-line pt-8"
+    aria-labelledby="project-contact-title"
+  >
+    <h3 class={sectionTitle} id="project-contact-title">
+      How to reach you
+    </h3>
+    <div class="mt-7 grid grid-cols-2 gap-x-5 gap-y-7 max-[48rem]:grid-cols-1">
+      <div>
+        <label class={fieldLabel} for="contact-name">
+          Name
+        </label>
+        <input
+          class={inputClass}
+          id="contact-name"
+          name="name"
+          type="text"
+          autocomplete="name"
+          required
+          aria-describedby="contact-name-error"
+          data-error-message="Enter your name."
+        />
+        <p
+          class={errorClass}
+          id="contact-name-error"
+          data-error-for="contact-name"
+        ></p>
+      </div>
+      <div>
+        <label class={fieldLabel} for="contact-phone">
+          Phone
+        </label>
+        <input
+          class={inputClass}
+          id="contact-phone"
+          name="phone"
+          type="tel"
+          autocomplete="tel"
+          inputmode="tel"
+          required
+          aria-describedby="contact-phone-error"
+          data-error-message="Enter a phone number where we can reach you."
+        />
+        <p
+          class={errorClass}
+          id="contact-phone-error"
+          data-error-for="contact-phone"
+        ></p>
+      </div>
+      <div>
+        <label class={fieldLabel} for="contact-email">
+          Email <span class="font-normal text-muted">(optional)</span>
+        </label>
+        <input
+          class={inputClass}
+          id="contact-email"
+          name="email"
+          type="email"
+          autocomplete="email"
+          aria-describedby="contact-email-error"
+          data-error-message="Enter a complete email address."
+        />
+        <p
+          class={errorClass}
+          id="contact-email-error"
+          data-error-for="contact-email"
+        ></p>
+      </div>
+      <div>
+        <label class={fieldLabel} for="best-time">
+          Best time to reach you{" "}
+          <span class="font-normal text-muted">(optional)</span>
+        </label>
+        <input
+          class={inputClass}
+          id="best-time"
+          name="best_time"
+          type="text"
+          placeholder="For example, weekday afternoons"
+        />
+      </div>
+    </div>
+
+    <fieldset class="mt-7 border-0 p-0" data-required-group>
+      <legend class={fieldLabel}>Preferred contact method</legend>
+      <div class="flex flex-wrap gap-x-8 gap-y-3">
+        {[
+          ["Call", "preference-call"],
+          ["Text", "preference-text"],
+          ["Email", "preference-email"],
+        ].map(([label, id]) => (
+          <label
+            class="flex min-h-11 cursor-pointer items-center gap-3 font-medium"
+            for={id}
+          >
+            <input
+              class="h-5 w-5 rounded-sm accent-burgundy"
+              id={id}
+              type="radio"
+              name="contact_preference"
+              value={label}
+            />
+            {label}
+          </label>
+        ))}
+      </div>
+      <p class={errorClass} data-group-error>
+        Choose how you would prefer to be contacted.
+      </p>
+    </fieldset>
+  </section>
+
+  <div class="mt-12 border-t border-line pt-8">
+    {formReady ? (
+      <>
+        <p class="mb-5 max-w-[44rem] text-sm text-muted">
+          By sending this request, you agree that Peterson Excavating &
+          Landscaping may contact you about this project.
+        </p>
+        <button
+          class:list={[
+            "inline-flex min-h-15 items-center justify-center gap-3 rounded-xl bg-burgundy px-6 py-4 font-semibold text-white transition-colors hover:bg-burgundy/95 disabled:cursor-wait disabled:opacity-65 max-[48rem]:w-full",
+            focusRing,
+          ]}
+          type="submit"
+          data-pending-label="Sending project estimate request…"
+        >
+          Request a project estimate
+          <ArrowRight class="w-5" stroke-width={1.8} aria-hidden="true" />
+        </button>
+      </>
+    ) : (
+      <div class="rounded-2xl border border-line bg-stone/55 p-5">
+        <p class="m-0 font-semibold text-ink">
+          Online submission is being connected.
+        </p>
+        <p class="mt-2 mb-0 text-muted">
+          The form is ready for review. Until the secure submission service is
+          configured, please call or text {phoneDisplay}.
+        </p>
+        <button
+          class="mt-5 inline-flex min-h-14 cursor-not-allowed items-center gap-3 rounded-xl bg-charcoal px-5 text-white/55"
+          type="submit"
+          disabled
+        >
+          Request a project estimate
+          <ArrowRight class="w-5" stroke-width={1.8} aria-hidden="true" />
+        </button>
+      </div>
+    )}
+  </div>
+</form>
+
+<script>
+  const otherProjectToggle = document.querySelector<HTMLInputElement>(
+    "[data-other-project-toggle]",
+  );
+  const otherProjectField = document.querySelector<HTMLElement>(
+    "[data-other-project-field]",
+  );
+  const otherProjectInput = otherProjectField?.querySelector<HTMLInputElement>(
+    "#project-type-other-details",
+  );
+
+  const syncOtherProjectField = () => {
+    const visible = Boolean(otherProjectToggle?.checked);
+    otherProjectField?.toggleAttribute("hidden", !visible);
+    if (otherProjectInput) {
+      otherProjectInput.disabled = !visible;
+      otherProjectInput.required = visible;
+      if (!visible) {
+        otherProjectInput.value = "";
+        otherProjectInput.removeAttribute("aria-invalid");
+        const error = document.querySelector<HTMLElement>(
+          '[data-error-for="project-type-other-details"]',
+        );
+        if (error) {
+          error.textContent = "";
+          error.removeAttribute("data-visible");
+        }
+      }
+    }
+  };
+
+  otherProjectToggle?.addEventListener("change", syncOtherProjectField);
+  syncOtherProjectField();
+</script>

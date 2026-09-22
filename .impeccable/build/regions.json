@@ -1,0 +1,138 @@
+{
+  "regions": [
+    {
+      "id": "hero-media",
+      "kind": "plate",
+      "grid": "A0:J6",
+      "note": "full-bleed synthetic placeholder for authentic northern Minnesota residential excavation project video, with a measured dark scrim",
+      "bleed": true
+    },
+    {
+      "id": "brand-logo",
+      "kind": "plate",
+      "grid": "A0:B0",
+      "note": "supplied Peterson Excavating and Landscaping logo lockup rendered in white"
+    },
+    {
+      "id": "primary-nav",
+      "kind": "text",
+      "grid": "D0:G0",
+      "note": "compact white navigation labels Services, Our Work, About, Areas We Serve, Contact"
+    },
+    {
+      "id": "nav-estimate",
+      "kind": "control",
+      "grid": "I0:J0",
+      "note": "burgundy Request an Estimate button with right arrow"
+    },
+    {
+      "id": "hero-kicker",
+      "kind": "text",
+      "grid": "A1:B1",
+      "note": "small uppercase Residential Excavation label with short white rule"
+    },
+    {
+      "id": "hero-title",
+      "kind": "text",
+      "grid": "A2:D3",
+      "note": "large two-line white headline Local Experience. Solid Results."
+    },
+    {
+      "id": "hero-copy",
+      "kind": "text",
+      "grid": "A4:D4",
+      "note": "white supporting sentence Complete residential site work from clearing through finish preparation."
+    },
+    {
+      "id": "hero-estimate",
+      "kind": "control",
+      "grid": "A5:B5",
+      "note": "burgundy Request an Estimate button with arrow"
+    },
+    {
+      "id": "hero-call-text",
+      "kind": "control",
+      "grid": "C5:D5",
+      "note": "dark translucent outlined Call and Text action"
+    },
+    {
+      "id": "hero-play",
+      "kind": "control",
+      "grid": "H4:H5",
+      "note": "white circular play control with vertical divider"
+    },
+    {
+      "id": "hero-media-label",
+      "kind": "text",
+      "grid": "I4:J5",
+      "note": "white two-line label Authentic project video required."
+    },
+    {
+      "id": "services-kicker",
+      "kind": "text",
+      "grid": "A6:B6",
+      "note": "burgundy rule and uppercase Our Services label"
+    },
+    {
+      "id": "services-title",
+      "kind": "text",
+      "grid": "A7:E7",
+      "note": "large black two-line heading Residential Site Work From Start to Finish"
+    },
+    {
+      "id": "services-copy",
+      "kind": "text",
+      "grid": "A8:D8",
+      "note": "gray supporting copy about essential excavation work for a solid foundation"
+    },
+    {
+      "id": "service-clearing",
+      "kind": "plate",
+      "grid": "A9:B9",
+      "note": "synthetic replacement placeholder image of residential site clearing with dark caption scrim"
+    },
+    {
+      "id": "service-grading",
+      "kind": "plate",
+      "grid": "C9:D9",
+      "note": "synthetic replacement placeholder image of grading and preparation with dark caption scrim"
+    },
+    {
+      "id": "service-foundation",
+      "kind": "plate",
+      "grid": "E9:F9",
+      "note": "synthetic replacement placeholder image of residential foundation excavation with dark caption scrim"
+    },
+    {
+      "id": "service-labels",
+      "kind": "text",
+      "grid": "A9:F9",
+      "note": "three white uppercase service labels with arrows over their image tiles"
+    },
+    {
+      "id": "projects-kicker",
+      "kind": "text",
+      "grid": "F6:G6",
+      "note": "burgundy rule and uppercase Our Work label"
+    },
+    {
+      "id": "projects-link",
+      "kind": "control",
+      "grid": "I6:J6",
+      "note": "burgundy View Our Work text link with arrow"
+    },
+    {
+      "id": "projects-title",
+      "kind": "text",
+      "grid": "F7:J7",
+      "note": "large black heading Real Residential Projects"
+    },
+    {
+      "id": "projects-media",
+      "kind": "plate",
+      "grid": "F8:J9",
+      "note": "large synthetic replacement placeholder photograph of an excavated residential foundation site",
+      "bleed": true
+    }
+  ]
+}
